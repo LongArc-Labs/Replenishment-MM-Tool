@@ -1,0 +1,102 @@
+[
+  {
+    "id": "q1_core_philosophy",
+    "question": "What does the company fundamentally expect replenishment to achieve?",
+    "options": [
+      { "id": "a", "label": "Keep the network supplied at the lowest possible cost while supporting scale and high volumes.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Create a dependable flow of inventory that the business can plan, control and rely on every day.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Respond closely to what each Dark Store needs so that product availability and customer promise are protected.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "Create the right balance between availability, cost, reliability and responsiveness.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q2_availability_philosophy",
+    "question": "What does “good availability” mean to the company?",
+    "options": [
+      { "id": "a", "label": "Products should be available wherever there is demand, even if this requires additional inventory or transportation.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Availability should be predictable and maintained through a disciplined replenishment system.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "The most important products should be available exactly when customers are most likely to need them.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "Availability should be maintained at the level that creates the best overall business outcome.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q3_demand_response",
+    "question": "What should replenishment primarily respond to?",
+    "options": [
+      { "id": "a", "label": "The scale and volume requirements of the network.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "A defined operating rhythm that creates consistency across Dark Stores.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "The changing demand and specific requirements of each Dark Store.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "The combined movement of demand, inventory, capacity, service and cost.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q4_frequency_philosophy",
+    "question": "How does the company think about replenishment frequency?",
+    "options": [
+      { "id": "a", "label": "More frequent replenishment is valuable because it enables greater sales and availability.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Replenishment should follow a stable rhythm that the network can consistently execute.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Replenishment frequency should reflect the characteristics and needs of individual products and stores.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "Frequency should be determined by the point at which additional service creates more value than additional cost.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q5_time_tolerance",
+    "question": "What level of delay can the business fundamentally accept in replenishment?",
+    "options": [
+      { "id": "a", "label": "Delay should be minimized because lost availability directly limits business growth.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Delay should remain within a clearly defined and consistently achievable service promise.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Delay is acceptable only when it does not compromise critical products or customer expectations.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "The acceptable delay should depend on the economic and service consequences of the situation.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q6_middlemile_optimization",
+    "question": "What should the middle-mile network primarily optimize for?",
+    "options": [
+      { "id": "a", "label": "Move the largest possible volume at the lowest possible cost.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Move inventory through a reliable and repeatable network with predictable execution.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Move the right inventory at the right time to protect Dark Store availability.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "Optimize the entire network across vehicle capacity, cost, service and inventory requirements.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q7_capacity_philosophy",
+    "question": "What is the company's view of excess transportation capacity?",
+    "options": [
+      { "id": "a", "label": "Excess capacity is acceptable if it protects growth and ensures inventory is available when needed.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Capacity should be planned carefully so that the network operates within defined requirements.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Capacity should be readily available when demand or product requirements suddenly change.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "Capacity should be flexed according to where it creates the greatest overall business value.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q8_flexibility_philosophy",
+    "question": "What is the company's fundamental attitude toward replenishment flexibility?",
+    "options": [
+      { "id": "a", "label": "Flexibility is valuable because the network should be able to support growth and changing volumes.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Flexibility should be limited because consistency and control create a more reliable operation.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Flexibility is essential because Dark Stores and products do not always behave the same way.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "Flexibility should be introduced wherever it improves the overall network outcome.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q9_service_cost",
+    "question": "When service and transportation cost conflict, what principle should guide the decision?",
+    "options": [
+      { "id": "a", "label": "Protect the business opportunity; additional transportation is justified when it supports availability and growth.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "Protect the operating standard; service should be achieved through a disciplined and efficient process.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Protect the customer promise; additional cost is acceptable when it protects critical availability.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "Protect the economics of the whole network; neither cost nor service should automatically dominate.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q10_overall_philosophy",
+    "question": "Which statement best describes what the company ultimately wants from its replenishment network?",
+    "options": [
+      { "id": "a", "label": "“Keep the network moving.” Scale rapidly, maintain availability and move inventory at competitive cost.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "b", "label": "“Make it dependable.” Build a predictable, controlled and repeatable replenishment system.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "“Be there when it matters.” Respond to demand and protect the availability that matters most to customers.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "d", "label": "“Optimize the whole.” Continuously balance service, cost, capacity, inventory and responsiveness.", "affinity": { "balanced": 1 } }
+    ]
+  }
+]

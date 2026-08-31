@@ -1,0 +1,1206 @@
+[
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- A manual D-1 estimate is prepared for under 30% of dry SKUs, without a system-run ARS\n- Same-day adjustment, where it happens, is ad hoc and not demand-triggered"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- A D-1 automated run covers 30-60% of dry SKU replenishment volume\n- A defined (if not yet optimal) same-day top-up step exists for the remainder\n- Planning-to-dispatch window is documented and tracked weekly"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- D-1 ARS run covers 60-90% of dry SKU replenishment volume\n- The same-day second pass is demand-triggered (not clock-triggered) for over 60% of that pass\n- Resulting stockout rate held under 5% and overstock rate under 8%, tracked weekly"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- D-1 ARS run covers over 90% of dry SKU volume, targeting ~70% of the day's total dry quantity\n- The remaining ~30% is committed via a same-day, fully demand-triggered second pass\n- Stockout rate under 2% and overstock rate under 4%, both tracked in real time\n- Zero manual overrides to the ARS output without a logged reason"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- A same-day adjustment for FnV happens, but only reactively once a stockout or dump is already visible"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- At least 1 same-day FnV replanning cycle runs daily, using prior-day sales as the basis (not yet live same-day signals)"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- 2 or more same-day FnV replanning cycles run daily\n- Live same-day sales/wastage data is incorporated for over 60% of FnV SKUs"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- FnV replenishment runs on 2+ same-day cycles fully driven by live demand and shelf-life data for over 90% of FnV SKUs\n- FnV dump/shrinkage rate attributable to over-replenishment held under 3%"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Reorder-point triggers defined for under 20% of SKUs; safety stock not lead-time-adjusted"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Reorder-point triggers cover 20-50% of SKUs\n- Safety stock is lead-time-adjusted for the dry category only"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Reorder-point triggers cover 50-90% of SKUs across both dry and FnV\n- Safety stock is lead-time-adjusted for both categories"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Reorder-point triggers cover over 90% of SKUs\n- Safety stock is dynamically lead-time- and variability-adjusted per SKU, reviewed at least monthly"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.4",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Forecast informs replenishment for under 20% of SKUs, applied inconsistently"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.4",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- A forecast-derived formula (Forecast Demand + Safety Stock - Current Inventory) covers 20-60% of SKUs\n- Reviewed periodically for linkage accuracy"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.4",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Formula-driven linkage covers 60-90% of SKUs\n- Manual override rate held under 15%, reviewed weekly"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.4",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Formula-driven linkage covers over 90% of SKUs with automated recalculation as the forecast updates\n- Manual override rate under 5%, logged with reason, tracked in real time"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.5",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Emergency top-ups happen but are entirely ad hoc, with no defined trigger or owner"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.5",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- A manually-invoked emergency top-up procedure is defined and used\n- Invoked for more than 10% of replenishment cycles"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.5",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Emergency top-up is bound to a defined SLA (e.g. dispatched within 4 hours of trigger)\n- Invoked for under 10% of cycles, tracked weekly"
+  },
+  {
+    "module_id": "RM1",
+    "area_id": "RM1.5",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Emergency top-up is fully integrated into the automated replenishment system with SLA-bound, system-triggered activation\n- Invoked for under 3% of cycles"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Frequency varies informally by category (e.g. \"FnV gets more\"), without a documented velocity/shelf-life-based rule"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- A documented frequency band exists (e.g. high-velocity dry: 1 cycle/day, FnV: 2 cycles/day)\n- Applied to over 50% of SKUs"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Frequency bands cover over 80% of SKUs\n- Reviewed quarterly against actual velocity/shelf-life data"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Frequency is dynamically tuned per SKU by real-time velocity, shelf-life, and dark-store inventory position for over 90% of SKUs"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- DoI is tracked by category (dry vs FnV) but not by individual SKU, and no target band is defined"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- DoI is tracked by SKU weekly against a defined target band, for the dry category only"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- DoI is tracked by SKU daily against a target band for both dry and FnV, with breaches flagged"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- DoI is tracked by SKU in real time against a target band for both categories\n- Breaches are auto-flagged and root-caused within the day"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- The window is known informally for a few high-profile SKUs/routes but not tracked as a standing metric"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Planning-to-dispatch lead time is tracked weekly at an aggregate level"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Lead time is tracked per replenishment cycle (D-1 and same-day passes separately)\n- Delays over a defined threshold (e.g. 2 hours) are flagged"
+  },
+  {
+    "module_id": "RM2",
+    "area_id": "RM2.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Lead time is tracked in real time per cycle with automated alerts on threshold breach\n- Monthly root-cause review of chronic delay sources"
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- An informal sense of when more capacity is needed exists but isn't written down or tied to volume.\n- changes happen reactively after a problem shows up."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nCurrent hub/lane structure has a documented volume-based rationale, and a defined volume threshold exists for adding a new hub/lane."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nHub/lane design is reviewed against current demand data on a regular cadence (e.g. quarterly), with thresholds tied to average and peak/seasonal volume."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nNetwork design is proactively modeled against forecasted demand growth and geography shifts, with changes planned ahead of the threshold being hit."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nBasic manual grouping of nearby stops happens sometimes, but inconsistently and without a defined method."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nA defined method (manual or tool-assisted) is used to sequence multi-stop routes based on geography and volume."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nRoute optimization is software-assisted and reviewed regularly against actual vs. planned stop efficiency."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nRoutes are dynamically re-optimized using live data (traffic, order changes, vehicle availability), continuously improving stop efficiency."
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Assignment logic exists informally (e.g. \"nearest hub\") but isn't calculated or reviewed"
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Assignment is calculated against distance/cost for over 50% of dark stores\n- Reviewed only at network-change events"
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Assignment covers over 90% of dark stores, reviewed quarterly as the network grows"
+  },
+  {
+    "module_id": "RM3",
+    "area_id": "RM3.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Assignment is continuously re-optimized as new dark stores/hubs are added\n- 100% of dark stores are served by their cost/distance-optimal node"
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- A rough wave schedule exists but isn't tied to volume/demand data\n- Vehicle size is chosen by habit; under 20% of waves have a vehicle size matching actual load within +/-20%"
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Wave structure is documented and designed against average daily volume distribution\n- Vehicle-size-to-volume match rate is 40-60%, tracked monthly"
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Wave structure is reviewed and adjusted regularly against actual volume patterns, including peak periods\n- Vehicle-size-to-volume match rate is 60-85%, with mismatches root-caused monthly"
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Wave architecture is dynamically adjusted based on real-time order flow and downstream consumption patterns\n- Vehicle-size-to-volume match rate exceeds 90%, benchmarked against industry practice (e.g. a fleet mix tiered by dark-store volume band)"
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nReadiness is attempted informally but wait times are inconsistent and untracked."
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nVehicle wait time for cargo readiness is measured and tracked against a target."
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nStaging/picking is scheduled to align with vehicle arrival times, with wait time root-caused when it exceeds target."
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nWave readiness is tightly synchronized with vehicle ETAs (dock scheduling, pre-staging), minimizing wait time to near zero."
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nSome awareness exists that timing matters, but waves aren't deliberately aligned to demand windows."
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nWave departure times are mapped against known downstream demand windows for most waves."
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nWave-to-demand alignment is tracked and adjusted regularly as downstream demand patterns shift."
+  },
+  {
+    "module_id": "RM4",
+    "area_id": "RM4.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nWave timing is dynamically optimized against real-time downstream demand signals across the network."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Capacity is planned informally against volume but not reviewed regularly.\n- gaps happen often and are covered reactively, however they're covered."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nTotal capacity (owned, contracted, and spot combined) is documented against average daily dispatch volume and reviewed monthly, with a clear, deliberate rationale for how much of it is committed vs. spot."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Capacity planning covers average and peak volume, with the committed/spot split explicitly matched to how predictable volume is right now (e.g. a fast-growing lane deliberately leaning on spot.\n- a stable lane deliberately leaning on committed capacity)."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nCapacity planning is dynamically adjusted to forecasted volume including seasonal/event peaks, with the committed/spot mix continuously re-optimized as each lane's predictability and the business's capital position evolve."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nA mix exists, but it's a byproduct of circumstance (whatever was available when scaling started) rather than a deliberate choice, and isn't tracked against actuals."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nA target mix is documented and explicitly justified against the business's current stage - e.g. a growing business deliberately leaning contracted/spot for flexibility and capital efficiency, or a mature business with stable volume deliberately leaning owned/contracted for lower steady-state cost. Tracked monthly against actuals."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nThe mix is actively revisited on a regular cadence as volume predictability and capital position evolve, with a pre-agreed trigger for when the target mix itself should shift (e.g. once a lane's volume is stable for two quarters, move it from spot to contract)."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nThe mix is continuously optimized using live cost, demand-predictability, and capital-cost signals, with the owned/contracted/spot balance an explicit, revisited decision at every stage - not a default set once and never questioned."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nA backup vendor is contacted only once a shortage is already identified."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nA defined backup arrangement exists and is engaged proactively before a shortfall causes a missed dispatch, sized to the business's actual peak-risk exposure rather than a fixed headcount."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nBackup coverage is tested periodically with response-time expectations agreed in advance, proportionate to how much volume/revenue is genuinely at risk from a shortage."
+  },
+  {
+    "module_id": "RM5",
+    "area_id": "RM5.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nBackup readiness is continuously maintained and tested, scaled dynamically as volume and peak-risk grow - without over-investing in standby capacity beyond what current exposure justifies."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Fill rate known anecdotally (not tracked as a number); estimated 50-65% based on informal observation"
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Fill rate measured and tracked monthly against a 70% target"
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Fill rate tracked per lane/vehicle type, held at 70-85%\n- Chronic sub-70% trips root-caused"
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Fill rate optimized dynamically (load consolidation, wave timing)\n- Consistently at or above 90% of rated capacity"
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nEmpty-running is acknowledged as a problem and backhaul is used occasionally, but only when a driver/dispatcher happens to notice an opportunity - nothing is measured or planned."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nEmpty-running % is tracked with a reduction target, and backhaul planning is a defined step in trip planning with its own tracked utilization rate."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nEmpty-running is actively reduced through systematic backhaul planning and route redesign, reviewed monthly against target across most lanes."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nEmpty-running is minimized network-wide through continuous backhaul/route optimization, tracked in real time and sitting near the practical ceiling for the network's shape."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nTurnaround time is known informally for a few routes but not tracked systematically."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nTurnaround time is measured per trip and tracked against a target."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nTurnaround time is tracked per lane/vehicle, with bottleneck stages (loading, dock wait, unloading) identified and addressed."
+  },
+  {
+    "module_id": "RM6",
+    "area_id": "RM6.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nTurnaround time is continuously monitored and optimized, with trips-per-vehicle-per-day maximized against a defined ceiling."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nOn-time arrival is tracked loosely/manually, without a consistent definition of 'on time'."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nOn-time arrival % is tracked systematically against a defined SLA window, reviewed monthly."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nOn-time arrival is tracked per lane with root-cause analysis for chronic misses."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nOn-time arrival is tracked in real time with predictive ETA alerts, enabling proactive downstream replanning before a miss occurs."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nCancellations are known anecdotally but not logged or reviewed."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nTrip completion rate is tracked and reviewed monthly against a target."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nCancelled/failed trips are root-caused and tracked to closure."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nTrip completion rate is tracked in real time with automated failure alerts and near-zero unexplained cancellations."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nAverage transit time is tracked per lane, but variability/consistency is not measured."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nBoth average and variability (e.g. std. deviation) of transit time are tracked per lane against an SLA."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nHigh-variability lanes are identified and root-caused, with corrective action tracked to closure."
+  },
+  {
+    "module_id": "RM7",
+    "area_id": "RM7.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nTransit time variability is continuously monitored and actively engineered down through route/schedule design."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Unit costs calculated occasionally/manually but not tracked as a standing metric\n- No visibility into the gap vs the ~Rs 0.91/unit blended benchmark"
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Cost per km, per trip, and per unit moved is tracked monthly against an internal baseline\n- Current blended cost is approximately Rs 1.00/unit, tracked but not yet actively closed against the Rs 0.91/unit benchmark"
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Unit costs tracked per lane/vehicle type, with variance from both the internal baseline and the Rs 0.91/unit benchmark investigated monthly\n- A documented gap-closure plan exists"
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Unit costs tracked in near-real-time with automated variance alerts\n- Blended cost per unit at or below the Rs 0.91/unit benchmark, or a documented, funded, time-bound plan is in place to reach it"
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nSome lanes are known informally to be expensive, but it isn't quantified or reviewed."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nCost-to-serve per lane is calculated and compared against network average on a defined cadence."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nStructurally expensive lanes are flagged and have a documented improvement or pricing action plan."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nLane-level cost-to-serve is continuously monitored and factored into network design and pricing decisions."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nSpot-hire cost is known to be higher but isn't quantified as a % of spend or understood as a deliberate trade-off."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nSpot-hire premium is tracked monthly as a % of total spend, with a clear view of why that level is being paid - flexibility trade-off vs. avoidable inefficiency."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nSpot-hire premium is broken down by lane/period to separate deliberate flexibility spend (e.g. a new, unproven lane) from avoidable spend (a stable lane that should have moved to contract), with a plan to shift the avoidable portion."
+  },
+  {
+    "module_id": "RM8",
+    "area_id": "RM8.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nSpot-hire premium is actively managed as a strategic lever - deliberately kept higher on immature/volatile lanes for flexibility, and driven down on stable lanes - tracked in near real time."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nTemperature is checked at dispatch only, not monitored continuously through the trip."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nTemperature is logged continuously during transit, with breach incidents recorded and reviewed monthly."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nBreach incidents are root-caused and tracked to closure, with recurring causes addressed (e.g. vehicle maintenance, driver training)."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nTemperature is monitored in real time with automated breach alerts, enabling in-trip corrective action before product is compromised."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nIn-transit loss is estimated informally but not measured as a distinct, tracked %."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nIn-transit damage/spoilage % is tracked monthly as its own metric, separate from warehouse/last-mile loss."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nRoot causes of in-transit loss (handling, temperature, route condition) are investigated and addressed."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nIn-transit loss is tracked in near-real-time with proactive interventions (packaging, handling protocol, route choice) driving it toward zero."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nDock dwell time is known anecdotally to be an issue but not measured."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nDock dwell time is measured per trip and tracked against a target."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nDwell time is tracked per dock/lane, with chronic delays root-caused and addressed."
+  },
+  {
+    "module_id": "RM9",
+    "area_id": "RM9.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nDwell time is actively minimized through dock scheduling/slotting and monitored in real time."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nSome vehicles have GPS tracking, but coverage is partial and inconsistently used."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nThe fleet serving critical/high-volume lanes has live GPS/ETA visibility through a defined, cost-appropriate system."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nTracking coverage extends across the full active fleet, integrated into a control tower view used for daily ops decisions."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nReal-time tracking with predictive ETA is standard fleet-wide and drives automated downstream alerts/replanning."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nExceptions are sometimes caught by a dispatcher noticing manually, with no defined detection process."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nA defined process/system flags exceptions (delay, deviation, breakdown) against expected trip progress."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nException detection is systematic and tracked, with average time-to-detect measured and improved."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nExceptions are detected automatically in near-real-time via system alerts, minimizing detection lag to minutes."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nAn informal escalation habit exists but isn't documented or consistently followed."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nA defined escalation path and SLA exist for exceptions, with adherence tracked."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nEscalation SLA adherence is tracked and chronic misses are root-caused."
+  },
+  {
+    "module_id": "RM10",
+    "area_id": "RM10.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nEscalation is largely automated (auto-routing to the right owner) with near-100% SLA adherence, tracked in real time."
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nPerformance is discussed informally with carriers but not scored or documented."
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- A defined scorecard (on-time %, cost, compliance) covers over 70% of carrier spend, reviewed quarterly"
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nScorecard results directly inform volume allocation and contract renewal decisions."
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nScorecarding is continuous and data-driven, with allocation dynamically shifted toward top performers."
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nSome single-vendor dependencies are known informally, but there's no view of which ones are genuinely high-risk given current volume."
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nLanes/regions carrying real risk (highest volume, or hardest to re-source quickly) are identified, with a documented backup plan - even where a second vendor isn't yet economically justified for lower-risk lanes."
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nBackup coverage is proportionate to risk and actively verified (not just listed) for the highest-risk lanes, with a clear trigger for when a growing lane earns a formal second vendor."
+  },
+  {
+    "module_id": "RM11",
+    "area_id": "RM11.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nVendor risk is continuously monitored across the network, with backup depth scaled to each lane's volume/criticality rather than applied uniformly everywhere."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nAccidents are logged after the fact, but near-misses/unsafe behavior aren't captured."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nIncidents (accidents and near-misses) are tracked and reviewed against a benchmark rate."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nRoot causes of incidents are analyzed and used to drive targeted driver training/interventions."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nSafety performance is monitored proactively (e.g. telematics-based driver scoring), with incident rates trending toward best-in-class."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nDocumentation exists but expiry isn't proactively monitored."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nA tracked register covers all active vehicles' compliance documents with expiry dates."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nAutomated reminders/alerts prevent lapses before they occur, tracked against a near-100% compliance target."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nCompliance is continuously monitored and audited, with zero tolerance for lapses enforced systematically."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nDriving hours are logged manually but not systematically checked against limits."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nDriving hours are tracked and checked against regulatory limits for all trips."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nViolations are root-caused (e.g. scheduling, route length) and addressed via planning changes."
+  },
+  {
+    "module_id": "RM12",
+    "area_id": "RM12.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nDriving hours are monitored in real time (e.g. via telematics) with automated alerts preventing violations before they occur."
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Shelf availability is checked manually at least once a shift, without a system-tracked %"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Shelf availability is tracked via the inventory system for over 50% of SKUs, reviewed twice daily\n- Stockout duration tracked weekly"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Shelf availability tracked in real time for over 90% of SKUs with automated low-stock alerts\n- Stockout duration root-caused daily"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Shelf availability tracked in real time for 100% of SKUs, held above 98%\n- Stockouts root-caused same-day, feeding continuous reorder-point recalibration (RM1.3)"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Fill rate is tracked only on escalation, not as a standing weekly metric"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Fill rate tracked weekly at the dark-store level, for the dry category only"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Fill rate tracked daily at the dark-store level for both dry and FnV, held above 90%"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Fill rate tracked in real time per dark store per SKU, consistently exceeding 97%"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Stock-out and excess incidents are noted informally when they occur, without a standing % metric"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Both rates tracked weekly at the dark-store level for over 50% of SKUs, against the DoI target band from RM2.2"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Both rates tracked daily per dark store per SKU\n- Root-caused for over 90% of incidents (forecast error, replenishment frequency, or shelf-life)\n- Resulting wastage is quantified"
+  },
+  {
+    "module_id": "RM13",
+    "area_id": "RM13.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Both rates tracked in real time per SKU, held within a tight target band, root-caused same-day\n- The stock-out-vs-excess trade-off is actively and continuously optimized across the dark-store network"
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.1",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nRoot-causing happens occasionally, informally, for the most visible failures only."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.1",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nA defined root-cause process covers major incident types, with findings documented."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.1",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nRoot-causing is systematic and covers most incidents, feeding into a tracked improvement backlog."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.1",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nRoot-causing is standard practice for all significant incidents, with findings driving proactive process redesign."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.2",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nSome corrective actions are tracked, but closure isn't consistently followed up."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.2",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nCorrective actions are tracked to closure with a defined target closure time."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.2",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nClosure time is measured and reviewed monthly, with overdue actions escalated."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.2",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nCorrective action closure is fast and reliably tracked, with closure time trending toward best-in-class benchmarks."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.3",
+    "target_level": 2,
+    "target_level_name": "Basic",
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\nRecurrence is noticed anecdotally but not measured."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.3",
+    "target_level": 3,
+    "target_level_name": "Standardized",
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\nRecurrence rate (same root cause reappearing within a defined window) is tracked."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.3",
+    "target_level": 4,
+    "target_level_name": "Managed",
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\nRecurring issues are flagged for deeper structural fixes rather than repeated point fixes."
+  },
+  {
+    "module_id": "RM14",
+    "area_id": "RM14.3",
+    "target_level": 5,
+    "target_level_name": "Best-in-class",
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\nRecurrence is actively monitored and trending toward zero, validating that fixes address true root causes."
+  }
+]

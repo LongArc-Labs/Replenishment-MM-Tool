@@ -1,0 +1,823 @@
+[
+  {
+    "module_id": "RM1",
+    "module_name": "Replenishment Demand & Supply Planning",
+    "area_id": "RM1.1",
+    "area_name": "Dry-Category D-1 Automated Replenishment Planning",
+    "area_weight": 0.2,
+    "score_descs": [
+      "- No D-1 planning exists for dry SKUs; all replenishment quantities are decided same-day or reactively\n- 0% of dry replenishment volume is committed ahead of the day of dispatch\n- No visibility into the planning-to-dispatch time window at all",
+      "- A manual D-1 estimate is prepared for under 30% of dry SKUs, without a system-run ARS\n- Same-day adjustment, where it happens, is ad hoc and not demand-triggered",
+      "- A D-1 automated run covers 30-60% of dry SKU replenishment volume\n- A defined (if not yet optimal) same-day top-up step exists for the remainder\n- Planning-to-dispatch window is documented and tracked weekly",
+      "- D-1 ARS run covers 60-90% of dry SKU replenishment volume\n- The same-day second pass is demand-triggered (not clock-triggered) for over 60% of that pass\n- Resulting stockout rate held under 5% and overstock rate under 8%, tracked weekly",
+      "- D-1 ARS run covers over 90% of dry SKU volume, targeting ~70% of the day's total dry quantity\n- The remaining ~30% is committed via a same-day, fully demand-triggered second pass\n- Stockout rate under 2% and overstock rate under 4%, both tracked in real time\n- Zero manual overrides to the ARS output without a logged reason"
+    ],
+    "indicative_scoring_questions": [
+      "Is a D-1 automated replenishment system (ARS) run for dry/grocery SKUs?",
+      "What % of the day's dry replenishment quantity is committed on D-1 vs same-day?",
+      "Is the same-day second pass demand-triggered or clock-triggered?",
+      "What is the resulting stockout and overstock rate?"
+    ],
+    "primary_kpi_metric": "Dry ARS D-1 Coverage % = SKUs Planned via D-1 Automated Run / Total Dry SKUs x 100; supported by D-1 vs Same-Day Volume Split % (target ~70/30)."
+  },
+  {
+    "module_id": "RM1",
+    "module_name": "Replenishment Demand & Supply Planning",
+    "area_id": "RM1.2",
+    "area_name": "FnV Same-Day / Real-Time Replenishment Planning",
+    "area_weight": 0.2,
+    "score_descs": [
+      "- FnV replenishment is planned on the same fixed D-1 basis as dry SKUs, ignoring shelf-life and demand-volatility differences\n- No same-day re-planning cycle exists for FnV",
+      "- A same-day adjustment for FnV happens, but only reactively once a stockout or dump is already visible",
+      "- At least 1 same-day FnV replanning cycle runs daily, using prior-day sales as the basis (not yet live same-day signals)",
+      "- 2 or more same-day FnV replanning cycles run daily\n- Live same-day sales/wastage data is incorporated for over 60% of FnV SKUs",
+      "- FnV replenishment runs on 2+ same-day cycles fully driven by live demand and shelf-life data for over 90% of FnV SKUs\n- FnV dump/shrinkage rate attributable to over-replenishment held under 3%"
+    ],
+    "indicative_scoring_questions": [
+      "For FnV SKUs, is replenishment planned same-day off live sales/wastage data, or on the same D-1 basis as dry SKUs?",
+      "How many same-day planning cycles run for FnV, and what is the resulting shrinkage/dump rate tied to over-planning?"
+    ],
+    "primary_kpi_metric": "FnV Same-Day Replenishment Coverage % = FnV Replenishment Qty Decided Same-Day off Live Demand / Total FnV Replenishment Qty x 100."
+  },
+  {
+    "module_id": "RM1",
+    "module_name": "Replenishment Demand & Supply Planning",
+    "area_id": "RM1.3",
+    "area_name": "Safety Stock & Min-Max/Reorder-Point Coverage",
+    "area_weight": 0.2,
+    "score_descs": [
+      "- No min-max/reorder-point trigger defined for any SKU\n- Safety stock, where held, is a flat, undifferentiated buffer",
+      "- Reorder-point triggers defined for under 20% of SKUs; safety stock not lead-time-adjusted",
+      "- Reorder-point triggers cover 20-50% of SKUs\n- Safety stock is lead-time-adjusted for the dry category only",
+      "- Reorder-point triggers cover 50-90% of SKUs across both dry and FnV\n- Safety stock is lead-time-adjusted for both categories",
+      "- Reorder-point triggers cover over 90% of SKUs\n- Safety stock is dynamically lead-time- and variability-adjusted per SKU, reviewed at least monthly"
+    ],
+    "indicative_scoring_questions": [
+      "What % of SKUs have a system-generated min-max/reorder-point trigger?",
+      "Is safety stock lead-time-adjusted, or a flat buffer, and does this differ between dry and FnV?"
+    ],
+    "primary_kpi_metric": "Reorder-Point Coverage % = SKUs with a System-Defined Min-Max/Reorder-Point / Total SKUs x 100, tracked separately for dry and FnV."
+  },
+  {
+    "module_id": "RM1",
+    "module_name": "Replenishment Demand & Supply Planning",
+    "area_id": "RM1.4",
+    "area_name": "Demand Forecast-to-Replenishment Linkage",
+    "area_weight": 0.2,
+    "score_descs": [
+      "- Replenishment quantities are decided independently of any demand forecast\n- Manual override rate is not tracked (effectively 100%)",
+      "- Forecast informs replenishment for under 20% of SKUs, applied inconsistently",
+      "- A forecast-derived formula (Forecast Demand + Safety Stock - Current Inventory) covers 20-60% of SKUs\n- Reviewed periodically for linkage accuracy",
+      "- Formula-driven linkage covers 60-90% of SKUs\n- Manual override rate held under 15%, reviewed weekly",
+      "- Formula-driven linkage covers over 90% of SKUs with automated recalculation as the forecast updates\n- Manual override rate under 5%, logged with reason, tracked in real time"
+    ],
+    "indicative_scoring_questions": [
+      "Does the demand forecast directly drive replenishment quantities, or are quantities decided independently (e.g. a store manager's ad hoc call)?",
+      "What is the manual override rate?"
+    ],
+    "primary_kpi_metric": "Forecast-to-Replenishment Linkage % = Replenishment Qty Directly Derived from the Demand Forecast / Total Replenishment Qty Generated x 100."
+  },
+  {
+    "module_id": "RM1",
+    "module_name": "Replenishment Demand & Supply Planning",
+    "area_id": "RM1.5",
+    "area_name": "Emergency / Off-Cycle Top-Up Process",
+    "area_weight": 0.2,
+    "score_descs": [
+      "- No emergency top-up process exists\n- Stockout risk flagged mid-cycle goes unaddressed until the next scheduled cycle",
+      "- Emergency top-ups happen but are entirely ad hoc, with no defined trigger or owner",
+      "- A manually-invoked emergency top-up procedure is defined and used\n- Invoked for more than 10% of replenishment cycles",
+      "- Emergency top-up is bound to a defined SLA (e.g. dispatched within 4 hours of trigger)\n- Invoked for under 10% of cycles, tracked weekly",
+      "- Emergency top-up is fully integrated into the automated replenishment system with SLA-bound, system-triggered activation\n- Invoked for under 3% of cycles"
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined process for an emergency/off-cycle top-up when stockout risk is flagged mid-cycle?",
+      "Is it bound to an SLA?",
+      "How often is it invoked?"
+    ],
+    "primary_kpi_metric": "Emergency Top-Up Incidence % = Off-Cycle Emergency Replenishment Trips / Total Replenishment Trips x 100; supported by Emergency Trip SLA Adherence %."
+  },
+  {
+    "module_id": "RM2",
+    "module_name": "Replenishment Cycle & Inventory Position Tracking",
+    "area_id": "RM2.1",
+    "area_name": "Replenishment Frequency by SKU Velocity/Shelf-Life",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- A single, uniform replenishment frequency (typically under 1 cycle/day) is applied to all SKUs regardless of velocity or shelf-life",
+      "- Frequency varies informally by category (e.g. \"FnV gets more\"), without a documented velocity/shelf-life-based rule",
+      "- A documented frequency band exists (e.g. high-velocity dry: 1 cycle/day, FnV: 2 cycles/day)\n- Applied to over 50% of SKUs",
+      "- Frequency bands cover over 80% of SKUs\n- Reviewed quarterly against actual velocity/shelf-life data",
+      "- Frequency is dynamically tuned per SKU by real-time velocity, shelf-life, and dark-store inventory position for over 90% of SKUs"
+    ],
+    "indicative_scoring_questions": [
+      "How many replenishment cycles/day run for high-velocity dry SKUs vs low-velocity dry SKUs vs FnV?",
+      "Is frequency explicitly set by velocity/shelf-life, or uniform across all SKUs?"
+    ],
+    "primary_kpi_metric": "Replenishment Cycle Frequency (cycles/day) by SKU velocity band, benchmarked against a defined target per band."
+  },
+  {
+    "module_id": "RM2",
+    "module_name": "Replenishment Cycle & Inventory Position Tracking",
+    "area_id": "RM2.2",
+    "area_name": "Days of Inventory (DoI) Target-Band Tracking",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- DoI is not tracked at all, or only in aggregate across the whole warehouse",
+      "- DoI is tracked by category (dry vs FnV) but not by individual SKU, and no target band is defined",
+      "- DoI is tracked by SKU weekly against a defined target band, for the dry category only",
+      "- DoI is tracked by SKU daily against a target band for both dry and FnV, with breaches flagged",
+      "- DoI is tracked by SKU in real time against a target band for both categories\n- Breaches are auto-flagged and root-caused within the day"
+    ],
+    "indicative_scoring_questions": [
+      "Is DoI tracked by SKU (not just aggregate)?",
+      "Is it tracked against a defined target band, separately for dry and FnV?"
+    ],
+    "primary_kpi_metric": "DoI vs Target Band Adherence % = SKU-Days Within Target DoI Band / Total SKU-Days x 100."
+  },
+  {
+    "module_id": "RM2",
+    "module_name": "Replenishment Cycle & Inventory Position Tracking",
+    "area_id": "RM2.3",
+    "area_name": "Planning-to-Dispatch Window Visibility",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- No visibility into the planning-to-dispatch window at all\n- The gap between a quantity being decided and being dispatched is unknown",
+      "- The window is known informally for a few high-profile SKUs/routes but not tracked as a standing metric",
+      "- Planning-to-dispatch lead time is tracked weekly at an aggregate level",
+      "- Lead time is tracked per replenishment cycle (D-1 and same-day passes separately)\n- Delays over a defined threshold (e.g. 2 hours) are flagged",
+      "- Lead time is tracked in real time per cycle with automated alerts on threshold breach\n- Monthly root-cause review of chronic delay sources"
+    ],
+    "indicative_scoring_questions": [
+      "Is there visibility into the elapsed time between when a replenishment quantity is planned and when it is actually dispatched?",
+      "Is this window used to detect and fix planning delays?"
+    ],
+    "primary_kpi_metric": "Planning-to-Dispatch Lead Time (hours), tracked separately for the D-1 and same-day passes."
+  },
+  {
+    "module_id": "RM3",
+    "module_name": "Network Design & Route Planning",
+    "area_id": "RM3.1",
+    "area_name": "Lane/Hub Design",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- No documented basis for hub/lane structure.\n- no trigger defined for adding capacity or a new hub/lane.",
+      "- An informal sense of when more capacity is needed exists but isn't written down or tied to volume.\n- changes happen reactively after a problem shows up.",
+      "Current hub/lane structure has a documented volume-based rationale, and a defined volume threshold exists for adding a new hub/lane.",
+      "Hub/lane design is reviewed against current demand data on a regular cadence (e.g. quarterly), with thresholds tied to average and peak/seasonal volume.",
+      "Network design is proactively modeled against forecasted demand growth and geography shifts, with changes planned ahead of the threshold being hit."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Deciding which hubs feed which downstream nodes, and whether the routing map matches actual demand geography?",
+      "What is the current lane/hub design review cadence (documented & current), and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Lane/hub design review cadence (documented & current)."
+  },
+  {
+    "module_id": "RM3",
+    "module_name": "Network Design & Route Planning",
+    "area_id": "RM3.2",
+    "area_name": "Route Optimization",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Routes are built ad hoc by dispatcher judgment/habit.\n- no stop-sequencing logic used.",
+      "Basic manual grouping of nearby stops happens sometimes, but inconsistently and without a defined method.",
+      "A defined method (manual or tool-assisted) is used to sequence multi-stop routes based on geography and volume.",
+      "Route optimization is software-assisted and reviewed regularly against actual vs. planned stop efficiency.",
+      "Routes are dynamically re-optimized using live data (traffic, order changes, vehicle availability), continuously improving stop efficiency."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Sequencing multi-stop routes so one trip serves multiple drop points instead of one truck per destination?",
+      "What is the current stops per trip vs. optimal stop count, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Stops per trip vs. optimal stop count."
+  },
+  {
+    "module_id": "RM3",
+    "module_name": "Network Design & Route Planning",
+    "area_id": "RM3.3",
+    "area_name": "Dark-Store Catchment & Warehouse Assignment",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Dark stores are assigned to a warehouse/hub by default or historical accident, with no documented rationale",
+      "- Assignment logic exists informally (e.g. \"nearest hub\") but isn't calculated or reviewed",
+      "- Assignment is calculated against distance/cost for over 50% of dark stores\n- Reviewed only at network-change events",
+      "- Assignment covers over 90% of dark stores, reviewed quarterly as the network grows",
+      "- Assignment is continuously re-optimized as new dark stores/hubs are added\n- 100% of dark stores are served by their cost/distance-optimal node"
+    ],
+    "indicative_scoring_questions": [
+      "Is each dark store assigned to a warehouse/hub based on a documented distance/cost optimization, or by legacy/default assignment?",
+      "How often is the assignment re-evaluated as the dark-store network grows?"
+    ],
+    "primary_kpi_metric": "% of dark stores served by their distance/cost-optimal warehouse or hub."
+  },
+  {
+    "module_id": "RM4",
+    "module_name": "Dispatch / Wave Planning",
+    "area_id": "RM4.1",
+    "area_name": "Wave Architecture & Volume-to-Vehicle Correlation",
+    "area_weight": 0.3333333333333333,
+    "score_descs": [
+      "- No formal wave structure; dispatch timing is arbitrary or purely reactive to truck availability\n- No correlation between dispatch volume and vehicle size selected; the same default vehicle is used regardless of load",
+      "- A rough wave schedule exists but isn't tied to volume/demand data\n- Vehicle size is chosen by habit; under 20% of waves have a vehicle size matching actual load within +/-20%",
+      "- Wave structure is documented and designed against average daily volume distribution\n- Vehicle-size-to-volume match rate is 40-60%, tracked monthly",
+      "- Wave structure is reviewed and adjusted regularly against actual volume patterns, including peak periods\n- Vehicle-size-to-volume match rate is 60-85%, with mismatches root-caused monthly",
+      "- Wave architecture is dynamically adjusted based on real-time order flow and downstream consumption patterns\n- Vehicle-size-to-volume match rate exceeds 90%, benchmarked against industry practice (e.g. a fleet mix tiered by dark-store volume band)"
+    ],
+    "indicative_scoring_questions": [
+      "Is there a formal wave structure tied to volume/demand data?",
+      "Is vehicle size selected for each wave based on a documented correlation to expected dispatch volume (vs a default/habitual choice), benchmarked against industry practice (e.g. a tiered fleet mix by route volume)?"
+    ],
+    "primary_kpi_metric": "% of dispatch volume assigned to a designed wave; supported by Vehicle-Size-to-Volume Match Rate % (waves where vehicle capacity selected is within +/-10% of actual load)."
+  },
+  {
+    "module_id": "RM4",
+    "module_name": "Dispatch / Wave Planning",
+    "area_id": "RM4.2",
+    "area_name": "Wave Readiness",
+    "area_weight": 0.3333333333333333,
+    "score_descs": [
+      "- Cargo readiness is not coordinated with vehicle arrival.\n- trucks routinely wait significant time to load.",
+      "Readiness is attempted informally but wait times are inconsistent and untracked.",
+      "Vehicle wait time for cargo readiness is measured and tracked against a target.",
+      "Staging/picking is scheduled to align with vehicle arrival times, with wait time root-caused when it exceeds target.",
+      "Wave readiness is tightly synchronized with vehicle ETAs (dock scheduling, pre-staging), minimizing wait time to near zero."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Ensuring cargo is staged and ready to load the moment the vehicle arrives, instead of the truck waiting on picking/packing?",
+      "What is the current avg. vehicle wait time for cargo readiness, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Avg. vehicle wait time for cargo readiness."
+  },
+  {
+    "module_id": "RM4",
+    "module_name": "Dispatch / Wave Planning",
+    "area_id": "RM4.3",
+    "area_name": "Wave-to-Demand Alignment",
+    "area_weight": 0.3333333333333333,
+    "score_descs": [
+      "Wave departure timing has no defined link to downstream demand windows.",
+      "Some awareness exists that timing matters, but waves aren't deliberately aligned to demand windows.",
+      "Wave departure times are mapped against known downstream demand windows for most waves.",
+      "Wave-to-demand alignment is tracked and adjusted regularly as downstream demand patterns shift.",
+      "Wave timing is dynamically optimized against real-time downstream demand signals across the network."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Timing wave departure so product lands at the destination exactly when it's needed, not too early or too late?",
+      "What is the current % of waves aligned to downstream demand window, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of waves aligned to downstream demand window."
+  },
+  {
+    "module_id": "RM5",
+    "module_name": "Fleet Capacity & Availability",
+    "area_id": "RM5.1",
+    "area_name": "Fleet Sizing",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- No defined relationship between fleet capacity and dispatch volume.\n- capacity gaps are discovered only when a trip can't be fulfilled.",
+      "- Capacity is planned informally against volume but not reviewed regularly.\n- gaps happen often and are covered reactively, however they're covered.",
+      "Total capacity (owned, contracted, and spot combined) is documented against average daily dispatch volume and reviewed monthly, with a clear, deliberate rationale for how much of it is committed vs. spot.",
+      "- Capacity planning covers average and peak volume, with the committed/spot split explicitly matched to how predictable volume is right now (e.g. a fast-growing lane deliberately leaning on spot.\n- a stable lane deliberately leaning on committed capacity).",
+      "Capacity planning is dynamically adjusted to forecasted volume including seasonal/event peaks, with the committed/spot mix continuously re-optimized as each lane's predictability and the business's capital position evolve."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Sizing dry/reefer fleet against average and peak dispatch volume so trips aren't cancelled for lack of vehicles?",
+      "What is the current fleet count vs. dispatch volume (avg & peak), and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Fleet count vs. dispatch volume (avg & peak)."
+  },
+  {
+    "module_id": "RM5",
+    "module_name": "Fleet Capacity & Availability",
+    "area_id": "RM5.2",
+    "area_name": "Owned vs. Spot Mix",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- No deliberate mix strategy.\n- capacity is sourced trip-by-trip with no stated rationale for owned vs. contracted vs. spot, regardless of stage.",
+      "A mix exists, but it's a byproduct of circumstance (whatever was available when scaling started) rather than a deliberate choice, and isn't tracked against actuals.",
+      "A target mix is documented and explicitly justified against the business's current stage - e.g. a growing business deliberately leaning contracted/spot for flexibility and capital efficiency, or a mature business with stable volume deliberately leaning owned/contracted for lower steady-state cost. Tracked monthly against actuals.",
+      "The mix is actively revisited on a regular cadence as volume predictability and capital position evolve, with a pre-agreed trigger for when the target mix itself should shift (e.g. once a lane's volume is stable for two quarters, move it from spot to contract).",
+      "The mix is continuously optimized using live cost, demand-predictability, and capital-cost signals, with the owned/contracted/spot balance an explicit, revisited decision at every stage - not a default set once and never questioned."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Deciding how much capacity to own/contract vs. rely on ad hoc market vehicles during demand spikes?",
+      "What is the current owned / contracted / spot capacity mix %, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Owned / contracted / spot capacity mix %."
+  },
+  {
+    "module_id": "RM5",
+    "module_name": "Fleet Capacity & Availability",
+    "area_id": "RM5.3",
+    "area_name": "Backup Fleet Readiness",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- No backup fleet arrangement exists.\n- shortages are handled ad hoc after they occur.",
+      "A backup vendor is contacted only once a shortage is already identified.",
+      "A defined backup arrangement exists and is engaged proactively before a shortfall causes a missed dispatch, sized to the business's actual peak-risk exposure rather than a fixed headcount.",
+      "Backup coverage is tested periodically with response-time expectations agreed in advance, proportionate to how much volume/revenue is genuinely at risk from a shortage.",
+      "Backup readiness is continuously maintained and tested, scaled dynamically as volume and peak-risk grow - without over-investing in standby capacity beyond what current exposure justifies."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Having a pre-qualified backup vendor pool ready before a shortage hits, not scrambling after?",
+      "What is the current backup activation time (shortfall to truck ready), and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Backup activation time (shortfall to truck ready)."
+  },
+  {
+    "module_id": "RM6",
+    "module_name": "Utilization & Efficiency",
+    "area_id": "RM6.1",
+    "area_name": "Vehicle Load/Fill Rate",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Fill rate not measured; vehicles commonly dispatched under 50% of rated capacity",
+      "- Fill rate known anecdotally (not tracked as a number); estimated 50-65% based on informal observation",
+      "- Fill rate measured and tracked monthly against a 70% target",
+      "- Fill rate tracked per lane/vehicle type, held at 70-85%\n- Chronic sub-70% trips root-caused",
+      "- Fill rate optimized dynamically (load consolidation, wave timing)\n- Consistently at or above 90% of rated capacity"
+    ],
+    "indicative_scoring_questions": [
+      "Is vehicle fill rate measured against rated capacity?",
+      "What % of rated capacity is typically achieved, and is it tracked per lane/vehicle type?"
+    ],
+    "primary_kpi_metric": "Vehicle fill rate % (volume/weight vs rated capacity). Distinct from Dark-Store Replenishment Fill Rate (RM13.2), which measures inventory fulfillment, not vehicle capacity."
+  },
+  {
+    "module_id": "RM6",
+    "module_name": "Utilization & Efficiency",
+    "area_id": "RM6.2",
+    "area_name": "Empty Running & Backhaul Utilization",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Empty-running % is not tracked, and return legs/backhaul aren't planned.\n- vehicles routinely run empty back to origin with no visibility into the waste.",
+      "Empty-running is acknowledged as a problem and backhaul is used occasionally, but only when a driver/dispatcher happens to notice an opportunity - nothing is measured or planned.",
+      "Empty-running % is tracked with a reduction target, and backhaul planning is a defined step in trip planning with its own tracked utilization rate.",
+      "Empty-running is actively reduced through systematic backhaul planning and route redesign, reviewed monthly against target across most lanes.",
+      "Empty-running is minimized network-wide through continuous backhaul/route optimization, tracked in real time and sitting near the practical ceiling for the network's shape."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Minimizing deadhead legs (esp. the return trip) by planning a load for them - reverse logistics, another node's inbound, or route redesign - instead of running empty?",
+      "What is the current empty-running % of total km, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Empty-running % of total km."
+  },
+  {
+    "module_id": "RM6",
+    "module_name": "Utilization & Efficiency",
+    "area_id": "RM6.3",
+    "area_name": "Vehicle Turnaround",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Turnaround time is not measured.\n- no visibility into how long a vehicle cycle actually takes.",
+      "Turnaround time is known informally for a few routes but not tracked systematically.",
+      "Turnaround time is measured per trip and tracked against a target.",
+      "Turnaround time is tracked per lane/vehicle, with bottleneck stages (loading, dock wait, unloading) identified and addressed.",
+      "Turnaround time is continuously monitored and optimized, with trips-per-vehicle-per-day maximized against a defined ceiling."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Tracking how fast a vehicle completes load -> transit -> unload -> return cycle to maximize trips/day?",
+      "What is the current avg. vehicle turnaround time per cycle, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Avg. vehicle turnaround time per cycle."
+  },
+  {
+    "module_id": "RM7",
+    "module_name": "Service Reliability",
+    "area_id": "RM7.1",
+    "area_name": "On-Time Performance",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- On-time arrival is not tracked.\n- delays are discovered only when downstream ops are disrupted.",
+      "On-time arrival is tracked loosely/manually, without a consistent definition of 'on time'.",
+      "On-time arrival % is tracked systematically against a defined SLA window, reviewed monthly.",
+      "On-time arrival is tracked per lane with root-cause analysis for chronic misses.",
+      "On-time arrival is tracked in real time with predictive ETA alerts, enabling proactive downstream replanning before a miss occurs."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Making sure trucks arrive at the destination hub within the planned window so downstream ops aren't delayed?",
+      "What is the current on-time hub arrival %, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "On-time hub arrival %."
+  },
+  {
+    "module_id": "RM7",
+    "module_name": "Service Reliability",
+    "area_id": "RM7.2",
+    "area_name": "Trip Completion",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "Trip completion/cancellation is not tracked.",
+      "Cancellations are known anecdotally but not logged or reviewed.",
+      "Trip completion rate is tracked and reviewed monthly against a target.",
+      "Cancelled/failed trips are root-caused and tracked to closure.",
+      "Trip completion rate is tracked in real time with automated failure alerts and near-zero unexplained cancellations."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Tracking trips that are cancelled, aborted, or fail to complete for any reason?",
+      "What is the current trip completion rate %, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Trip completion rate %."
+  },
+  {
+    "module_id": "RM7",
+    "module_name": "Service Reliability",
+    "area_id": "RM7.3",
+    "area_name": "Transit Time Consistency",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Only informal awareness of transit time exists.\n- no tracking of average or variability.",
+      "Average transit time is tracked per lane, but variability/consistency is not measured.",
+      "Both average and variability (e.g. std. deviation) of transit time are tracked per lane against an SLA.",
+      "High-variability lanes are identified and root-caused, with corrective action tracked to closure.",
+      "Transit time variability is continuously monitored and actively engineered down through route/schedule design."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Watching variability in transit time on a lane, not just the average, since inconsistency breaks downstream planning?",
+      "What is the current transit time variability (std. dev.) vs. sla, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Transit time variability (std. dev.) vs. SLA."
+  },
+  {
+    "module_id": "RM8",
+    "module_name": "Cost Discipline",
+    "area_id": "RM8.1",
+    "area_name": "Unit Cost Tracking",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Transportation cost tracked only at a total/aggregate level, with no per-km, per-trip, or per-unit breakdown\n- No basis to compare against any benchmark",
+      "- Unit costs calculated occasionally/manually but not tracked as a standing metric\n- No visibility into the gap vs the ~Rs 0.91/unit blended benchmark",
+      "- Cost per km, per trip, and per unit moved is tracked monthly against an internal baseline\n- Current blended cost is approximately Rs 1.00/unit, tracked but not yet actively closed against the Rs 0.91/unit benchmark",
+      "- Unit costs tracked per lane/vehicle type, with variance from both the internal baseline and the Rs 0.91/unit benchmark investigated monthly\n- A documented gap-closure plan exists",
+      "- Unit costs tracked in near-real-time with automated variance alerts\n- Blended cost per unit at or below the Rs 0.91/unit benchmark, or a documented, funded, time-bound plan is in place to reach it"
+    ],
+    "indicative_scoring_questions": [
+      "Is true cost per km, per trip, and per unit moved tracked?",
+      "How does the blended cost per unit compare to the ~Rs 0.91/unit external benchmark, and is there a plan to close any gap?"
+    ],
+    "primary_kpi_metric": "Cost per km / per trip / per unit moved. Benchmark: blended middle-mile cost per unit dispatched - reported at ~Rs 1.00/unit internally vs ~Rs 0.91/unit at Blinkit (blended-rate comparison)."
+  },
+  {
+    "module_id": "RM8",
+    "module_name": "Cost Discipline",
+    "area_id": "RM8.2",
+    "area_name": "Lane-Level Cost-to-Serve",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "- Cost-to-serve is not broken out by lane.\n- expensive lanes go unnoticed.",
+      "Some lanes are known informally to be expensive, but it isn't quantified or reviewed.",
+      "Cost-to-serve per lane is calculated and compared against network average on a defined cadence.",
+      "Structurally expensive lanes are flagged and have a documented improvement or pricing action plan.",
+      "Lane-level cost-to-serve is continuously monitored and factored into network design and pricing decisions."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Identifying structurally expensive lanes (long-haul, low-density) that are quietly eroding margin?",
+      "What is the current cost-to-serve per lane vs. network average, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Cost-to-serve per lane vs. network average."
+  },
+  {
+    "module_id": "RM8",
+    "module_name": "Cost Discipline",
+    "area_id": "RM8.3",
+    "area_name": "Spot-Hire Premium",
+    "area_weight": 0.3333375,
+    "score_descs": [
+      "Spot-hire premium cost is not tracked separately from total transportation spend.",
+      "Spot-hire cost is known to be higher but isn't quantified as a % of spend or understood as a deliberate trade-off.",
+      "Spot-hire premium is tracked monthly as a % of total spend, with a clear view of why that level is being paid - flexibility trade-off vs. avoidable inefficiency.",
+      "Spot-hire premium is broken down by lane/period to separate deliberate flexibility spend (e.g. a new, unproven lane) from avoidable spend (a stable lane that should have moved to contract), with a plan to shift the avoidable portion.",
+      "Spot-hire premium is actively managed as a strategic lever - deliberately kept higher on immature/volatile lanes for flexibility, and driven down on stable lanes - tracked in near real time."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Quantifying how much extra is spent when relying on market vehicles instead of contracted fleet?",
+      "What is the current spot-hire premium as % of total transport spend, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Spot-hire premium as % of total transport spend."
+  },
+  {
+    "module_id": "RM9",
+    "module_name": "Cold Chain / Product Integrity",
+    "area_id": "RM9.1",
+    "area_name": "Reefer Compliance",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- No temperature monitoring during transit.\n- compliance is assumed, not verified.",
+      "Temperature is checked at dispatch only, not monitored continuously through the trip.",
+      "Temperature is logged continuously during transit, with breach incidents recorded and reviewed monthly.",
+      "Breach incidents are root-caused and tracked to closure, with recurring causes addressed (e.g. vehicle maintenance, driver training).",
+      "Temperature is monitored in real time with automated breach alerts, enabling in-trip corrective action before product is compromised."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Verifying temperature-controlled vehicles actually hold the required range for the entire trip, not just at dispatch?",
+      "What is the current % of reefer trips with zero temperature breaches, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of reefer trips with zero temperature breaches."
+  },
+  {
+    "module_id": "RM9",
+    "module_name": "Cold Chain / Product Integrity",
+    "area_id": "RM9.2",
+    "area_name": "In-Transit Damage/Spoilage",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "In-transit damage/spoilage is not tracked separately from other loss categories.",
+      "In-transit loss is estimated informally but not measured as a distinct, tracked %.",
+      "In-transit damage/spoilage % is tracked monthly as its own metric, separate from warehouse/last-mile loss.",
+      "Root causes of in-transit loss (handling, temperature, route condition) are investigated and addressed.",
+      "In-transit loss is tracked in near-real-time with proactive interventions (packaging, handling protocol, route choice) driving it toward zero."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Catching product loss that happens specifically during the middle-mile leg, separate from warehouse or last-mile loss?",
+      "What is the current in-transit damage/spoilage % of units moved, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "In-transit damage/spoilage % of units moved."
+  },
+  {
+    "module_id": "RM9",
+    "module_name": "Cold Chain / Product Integrity",
+    "area_id": "RM9.3",
+    "area_name": "Dock Dwell Time",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- Dock dwell time is not tracked.\n- product may sit exposed for extended, unmeasured periods.",
+      "Dock dwell time is known anecdotally to be an issue but not measured.",
+      "Dock dwell time is measured per trip and tracked against a target.",
+      "Dwell time is tracked per dock/lane, with chronic delays root-caused and addressed.",
+      "Dwell time is actively minimized through dock scheduling/slotting and monitored in real time."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Limiting how long temperature-sensitive product sits at the dock during loading/unloading?",
+      "What is the current avg. dock dwell time per trip, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Avg. dock dwell time per trip."
+  },
+  {
+    "module_id": "RM10",
+    "module_name": "Visibility & Control Tower",
+    "area_id": "RM10.1",
+    "area_name": "Real-Time Tracking",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- No systematic vehicle tracking.\n- location is known only via ad hoc driver phone calls.",
+      "Some vehicles have GPS tracking, but coverage is partial and inconsistently used.",
+      "The fleet serving critical/high-volume lanes has live GPS/ETA visibility through a defined, cost-appropriate system.",
+      "Tracking coverage extends across the full active fleet, integrated into a control tower view used for daily ops decisions.",
+      "Real-time tracking with predictive ETA is standard fleet-wide and drives automated downstream alerts/replanning."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Knowing where every vehicle is right now, not relying on driver phone calls for location updates?",
+      "What is the current % of active fleet with live gps/eta visibility, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of active fleet with live GPS/ETA visibility."
+  },
+  {
+    "module_id": "RM10",
+    "module_name": "Visibility & Control Tower",
+    "area_id": "RM10.2",
+    "area_name": "Exception Detection",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "Exceptions are discovered only when downstream impact is already visible (e.g. a store calls asking where its truck is).",
+      "Exceptions are sometimes caught by a dispatcher noticing manually, with no defined detection process.",
+      "A defined process/system flags exceptions (delay, deviation, breakdown) against expected trip progress.",
+      "Exception detection is systematic and tracked, with average time-to-detect measured and improved.",
+      "Exceptions are detected automatically in near-real-time via system alerts, minimizing detection lag to minutes."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Catching a delay, breakdown, or route deviation early enough to act before it cascades downstream?",
+      "What is the current avg. time-to-detect a trip exception, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Avg. time-to-detect a trip exception."
+  },
+  {
+    "module_id": "RM10",
+    "module_name": "Visibility & Control Tower",
+    "area_id": "RM10.3",
+    "area_name": "Escalation Discipline",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- Detected exceptions have no defined escalation path.\n- action depends on who happens to notice.",
+      "An informal escalation habit exists but isn't documented or consistently followed.",
+      "A defined escalation path and SLA exist for exceptions, with adherence tracked.",
+      "Escalation SLA adherence is tracked and chronic misses are root-caused.",
+      "Escalation is largely automated (auto-routing to the right owner) with near-100% SLA adherence, tracked in real time."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Making sure a detected exception actually triggers the right action instead of sitting unactioned?",
+      "What is the current % of exceptions escalated/actioned within sla, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of exceptions escalated/actioned within SLA."
+  },
+  {
+    "module_id": "RM11",
+    "module_name": "Vendor / Carrier Management",
+    "area_id": "RM11.1",
+    "area_name": "Carrier Scorecarding",
+    "area_weight": 0.5,
+    "score_descs": [
+      "- No formal carrier scorecard.\n- allocation is based on relationships/habit rather than measured performance.",
+      "Performance is discussed informally with carriers but not scored or documented.",
+      "- A defined scorecard (on-time %, cost, compliance) covers over 70% of carrier spend, reviewed quarterly",
+      "Scorecard results directly inform volume allocation and contract renewal decisions.",
+      "Scorecarding is continuous and data-driven, with allocation dynamically shifted toward top performers."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Formally rating carriers on performance and price so allocation decisions aren't relationship-driven?",
+      "What is the current % of carrier spend covered by an active scorecard, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of carrier spend covered by an active scorecard."
+  },
+  {
+    "module_id": "RM11",
+    "module_name": "Vendor / Carrier Management",
+    "area_id": "RM11.2",
+    "area_name": "Vendor Bench Depth",
+    "area_weight": 0.5,
+    "score_descs": [
+      "Single points of failure (lanes/regions with only one viable vendor) aren't even identified.",
+      "Some single-vendor dependencies are known informally, but there's no view of which ones are genuinely high-risk given current volume.",
+      "Lanes/regions carrying real risk (highest volume, or hardest to re-source quickly) are identified, with a documented backup plan - even where a second vendor isn't yet economically justified for lower-risk lanes.",
+      "Backup coverage is proportionate to risk and actively verified (not just listed) for the highest-risk lanes, with a clear trigger for when a growing lane earns a formal second vendor.",
+      "Vendor risk is continuously monitored across the network, with backup depth scaled to each lane's volume/criticality rather than applied uniformly everywhere."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Having more than one qualified vendor per lane so a single vendor failure doesn't stop the network?",
+      "What is the current avg. # of qualified backup vendors per critical lane, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Avg. # of qualified backup vendors per critical lane."
+  },
+  {
+    "module_id": "RM12",
+    "module_name": "Safety & Compliance",
+    "area_id": "RM12.1",
+    "area_name": "Driver Safety",
+    "area_weight": 0.333325,
+    "score_descs": [
+      "Safety incidents are not systematically tracked.",
+      "Accidents are logged after the fact, but near-misses/unsafe behavior aren't captured.",
+      "Incidents (accidents and near-misses) are tracked and reviewed against a benchmark rate.",
+      "Root causes of incidents are analyzed and used to drive targeted driver training/interventions.",
+      "Safety performance is monitored proactively (e.g. telematics-based driver scoring), with incident rates trending toward best-in-class."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Tracking accidents, near-misses, and unsafe driving behavior across the fleet?",
+      "What is the current safety incidents per 10,000 km / 1,000 trips, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Safety incidents per 10,000 km / 1,000 trips."
+  },
+  {
+    "module_id": "RM12",
+    "module_name": "Safety & Compliance",
+    "area_id": "RM12.2",
+    "area_name": "Vehicle & Regulatory Fitness",
+    "area_weight": 0.333325,
+    "score_descs": [
+      "- Compliance documentation is not systematically tracked.\n- lapses are discovered reactively (e.g. at a checkpoint).",
+      "Documentation exists but expiry isn't proactively monitored.",
+      "A tracked register covers all active vehicles' compliance documents with expiry dates.",
+      "Automated reminders/alerts prevent lapses before they occur, tracked against a near-100% compliance target.",
+      "Compliance is continuously monitored and audited, with zero tolerance for lapses enforced systematically."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Ensuring every vehicle on the road has valid permits, insurance, and fitness certification?",
+      "What is the current % of fleet with fully valid compliance documents, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of fleet with fully valid compliance documents."
+  },
+  {
+    "module_id": "RM12",
+    "module_name": "Safety & Compliance",
+    "area_id": "RM12.3",
+    "area_name": "Driving Hours Compliance",
+    "area_weight": 0.333325,
+    "score_descs": [
+      "- Driving hours are not tracked.\n- compliance depends entirely on individual driver/dispatcher discretion.",
+      "Driving hours are logged manually but not systematically checked against limits.",
+      "Driving hours are tracked and checked against regulatory limits for all trips.",
+      "Violations are root-caused (e.g. scheduling, route length) and addressed via planning changes.",
+      "Driving hours are monitored in real time (e.g. via telematics) with automated alerts preventing violations before they occur."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Making sure drivers aren't pushed beyond legal/safe driving hour limits?",
+      "What is the current % of trips within permitted driving-hour limits, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of trips within permitted driving-hour limits."
+  },
+  {
+    "module_id": "RM13",
+    "module_name": "Replenishment Execution & Shelf Outcomes",
+    "area_id": "RM13.1",
+    "area_name": "Dark-Store Shelf Availability Tracking",
+    "area_weight": 0.33333,
+    "score_descs": [
+      "- Shelf availability is not measured; stockouts are discovered only via a failed customer order or staff noticing",
+      "- Shelf availability is checked manually at least once a shift, without a system-tracked %",
+      "- Shelf availability is tracked via the inventory system for over 50% of SKUs, reviewed twice daily\n- Stockout duration tracked weekly",
+      "- Shelf availability tracked in real time for over 90% of SKUs with automated low-stock alerts\n- Stockout duration root-caused daily",
+      "- Shelf availability tracked in real time for 100% of SKUs, held above 98%\n- Stockouts root-caused same-day, feeding continuous reorder-point recalibration (RM1.3)"
+    ],
+    "indicative_scoring_questions": [
+      "Is shelf availability tracked via the inventory system, and how often?",
+      "Is stockout duration tracked and root-caused?"
+    ],
+    "primary_kpi_metric": "Shelf Availability % (On-Shelf-In-Stock) = SKUs In Stock on Shelf / Total Listed SKUs x 100; supported by Average Stockout Duration (hours) per SKU."
+  },
+  {
+    "module_id": "RM13",
+    "module_name": "Replenishment Execution & Shelf Outcomes",
+    "area_id": "RM13.2",
+    "area_name": "Dark-Store Replenishment Fill Rate",
+    "area_weight": 0.33333,
+    "score_descs": [
+      "- Dark-store fill rate is not tracked; only escalated stockouts surface a fulfillment gap",
+      "- Fill rate is tracked only on escalation, not as a standing weekly metric",
+      "- Fill rate tracked weekly at the dark-store level, for the dry category only",
+      "- Fill rate tracked daily at the dark-store level for both dry and FnV, held above 90%",
+      "- Fill rate tracked in real time per dark store per SKU, consistently exceeding 97%"
+    ],
+    "indicative_scoring_questions": [
+      "Is fill rate tracked at the dark-store level (quantity received vs required), separately from any vehicle-capacity metric?",
+      "Does it consistently exceed a defined benchmark?"
+    ],
+    "primary_kpi_metric": "Dark-Store Fill Rate % = Replenishment Quantity Received at Dark Store / Replenishment Quantity Required x 100. This is an inventory-fulfillment metric, distinct from vehicle Load/Fill Rate (RM6.1), which measures vehicle capacity utilization."
+  },
+  {
+    "module_id": "RM13",
+    "module_name": "Replenishment Execution & Shelf Outcomes",
+    "area_id": "RM13.3",
+    "area_name": "Stock-out & Excess Inventory Management (Outcome-Level)",
+    "area_weight": 0.33333,
+    "score_descs": [
+      "- Neither stock-out rate nor excess-inventory rate is tracked routinely\n- Both are discovered only via complaints or physical overflow/wastage",
+      "- Stock-out and excess incidents are noted informally when they occur, without a standing % metric",
+      "- Both rates tracked weekly at the dark-store level for over 50% of SKUs, against the DoI target band from RM2.2",
+      "- Both rates tracked daily per dark store per SKU\n- Root-caused for over 90% of incidents (forecast error, replenishment frequency, or shelf-life)\n- Resulting wastage is quantified",
+      "- Both rates tracked in real time per SKU, held within a tight target band, root-caused same-day\n- The stock-out-vs-excess trade-off is actively and continuously optimized across the dark-store network"
+    ],
+    "indicative_scoring_questions": [
+      "Is stock-out rate tracked routinely (not just via complaints)?",
+      "Is excess-inventory rate tracked against the DoI target band from RM2.2?",
+      "Are both root-caused, and is the trade-off between them actively optimized?"
+    ],
+    "primary_kpi_metric": "Stock-out Rate % and Excess-Inventory Rate % at Dark Store = SKUs Stocked Out (or Carrying Excess vs Target DoI from RM2.2) / Total SKUs x 100, each tracked per SKU. This subpoint owns post-dispatch OUTCOMES only; the pre-dispatch check of whether wave volume matched inventory position lives in RM4.3 (Wave-to-Demand Alignment)."
+  },
+  {
+    "module_id": "RM14",
+    "module_name": "Root-Cause & Continuous Improvement",
+    "area_id": "RM14.1",
+    "area_name": "Failure Root-Causing",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- Failures are absorbed as routine cost.\n- no root-cause process exists.",
+      "Root-causing happens occasionally, informally, for the most visible failures only.",
+      "A defined root-cause process covers major incident types, with findings documented.",
+      "Root-causing is systematic and covers most incidents, feeding into a tracked improvement backlog.",
+      "Root-causing is standard practice for all significant incidents, with findings driving proactive process redesign."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Digging into why spot-hire, delays, or damage happened instead of treating them as routine cost?",
+      "What is the current % of major incidents with a documented root cause, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "% of major incidents with a documented root cause."
+  },
+  {
+    "module_id": "RM14",
+    "module_name": "Root-Cause & Continuous Improvement",
+    "area_id": "RM14.2",
+    "area_name": "Corrective Action Closure",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "- Corrective actions are rarely tracked to closure.\n- issues get logged and forgotten.",
+      "Some corrective actions are tracked, but closure isn't consistently followed up.",
+      "Corrective actions are tracked to closure with a defined target closure time.",
+      "Closure time is measured and reviewed monthly, with overdue actions escalated.",
+      "Corrective action closure is fast and reliably tracked, with closure time trending toward best-in-class benchmarks."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Making sure a root-caused issue is actually fixed, not just logged?",
+      "What is the current avg. days to close a corrective action, and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Avg. days to close a corrective action."
+  },
+  {
+    "module_id": "RM14",
+    "module_name": "Root-Cause & Continuous Improvement",
+    "area_id": "RM14.3",
+    "area_name": "Recurrence Tracking",
+    "area_weight": 0.33333333333333337,
+    "score_descs": [
+      "No tracking of whether a 'fixed' issue recurs.",
+      "Recurrence is noticed anecdotally but not measured.",
+      "Recurrence rate (same root cause reappearing within a defined window) is tracked.",
+      "Recurring issues are flagged for deeper structural fixes rather than repeated point fixes.",
+      "Recurrence is actively monitored and trending toward zero, validating that fixes address true root causes."
+    ],
+    "indicative_scoring_questions": [
+      "Is there a defined, documented approach to: Checking whether the same failure keeps recurring after being 'fixed'?",
+      "What is the current repeat-incident rate % (same root cause recurring), and how is it tracked - ad hoc, periodic/manual, or real-time/system-based?"
+    ],
+    "primary_kpi_metric": "Repeat-incident rate % (same root cause recurring)."
+  }
+]

@@ -1,0 +1,162 @@
+[
+  {
+    "metric_id": "kpi_shelf_availability",
+    "metric_name": "Dark-Store Shelf Availability %",
+    "group": "kpi",
+    "unit": "%",
+    "best_in_class": 98,
+    "direction": "higher_is_better",
+    "source_note": "Level-5 rubric threshold, RM13.1",
+    "linked_area_id": "RM13.1"
+  },
+  {
+    "metric_id": "kpi_fill_rate",
+    "metric_name": "Dark-Store Replenishment Fill Rate %",
+    "group": "kpi",
+    "unit": "%",
+    "best_in_class": 97,
+    "direction": "higher_is_better",
+    "source_note": "Level-5 rubric threshold, RM13.2",
+    "linked_area_id": "RM13.2"
+  },
+  {
+    "metric_id": "kpi_cost_per_unit",
+    "metric_name": "Blended Middle-Mile Cost per Unit Dispatched",
+    "group": "kpi",
+    "unit": "₹/unit",
+    "best_in_class": 0.91,
+    "direction": "lower_is_better",
+    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison",
+    "linked_area_id": "RM8.1"
+  },
+  {
+    "metric_id": "kpi_on_time_arrival",
+    "metric_name": "On-Time Hub Arrival %",
+    "group": "kpi",
+    "unit": "%",
+    "best_in_class": 99,
+    "direction": "higher_is_better",
+    "source_note": "Benchmarking sheet - Instamart on-time arrival adherence",
+    "linked_area_id": "RM7.1"
+  },
+  {
+    "metric_id": "kpi_vehicle_fill_rate",
+    "metric_name": "Vehicle Load / Fill Rate %",
+    "group": "kpi",
+    "unit": "%",
+    "best_in_class": 90,
+    "direction": "higher_is_better",
+    "source_note": "Level-5 rubric threshold, RM6.1",
+    "linked_area_id": "RM6.1"
+  },
+  {
+    "metric_id": "kpi_stockout_rate",
+    "metric_name": "Stock-out Rate %",
+    "group": "kpi",
+    "unit": "%",
+    "best_in_class": 2,
+    "direction": "lower_is_better",
+    "source_note": "Level-5 rubric threshold, RM1.1",
+    "linked_area_id": "RM13.3"
+  },
+  {
+    "metric_id": "op_d1_ars_coverage",
+    "metric_name": "D-1 ARS Coverage % (Dry)",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": 90,
+    "direction": "higher_is_better",
+    "source_note": "Level-5 rubric threshold, RM1.1",
+    "linked_area_id": "RM1.1"
+  },
+  {
+    "metric_id": "op_fnv_same_day_coverage",
+    "metric_name": "FnV Same-Day Replenishment Coverage %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": 90,
+    "direction": "higher_is_better",
+    "source_note": "Level-5 rubric threshold, RM1.2",
+    "linked_area_id": "RM1.2"
+  },
+  {
+    "metric_id": "op_reorder_point_coverage",
+    "metric_name": "Reorder-Point Coverage %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": 90,
+    "direction": "higher_is_better",
+    "source_note": "Level-5 rubric threshold, RM1.3",
+    "linked_area_id": "RM1.3"
+  },
+  {
+    "metric_id": "op_vehicle_utilization",
+    "metric_name": "Vehicle Utilization %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": 80,
+    "direction": "higher_is_better",
+    "source_note": "Benchmarking sheet - Instamart vehicle utilization",
+    "linked_area_id": "RM6.1"
+  },
+  {
+    "metric_id": "op_inbound_fill_rate",
+    "metric_name": "Inbound Fill Rate %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": 95,
+    "direction": "higher_is_better",
+    "source_note": "Benchmarking sheet - Zepto inbound fill rate",
+    "linked_area_id": null
+  },
+  {
+    "metric_id": "op_dispatch_received_gap",
+    "metric_name": "Dispatch-vs-Received Gap %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": 2,
+    "direction": "lower_is_better",
+    "source_note": "Benchmarking sheet - Zepto dispatch vs received gap",
+    "linked_area_id": "RM7.1"
+  },
+  {
+    "metric_id": "op_doi_adherence",
+    "metric_name": "DoI vs Target Band Adherence %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": null,
+    "direction": "higher_is_better",
+    "source_note": null,
+    "linked_area_id": "RM2.2"
+  },
+  {
+    "metric_id": "op_empty_running",
+    "metric_name": "Empty-Running % of Total km",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": null,
+    "direction": "lower_is_better",
+    "source_note": null,
+    "linked_area_id": "RM6.2"
+  },
+  {
+    "metric_id": "op_reefer_breach_free",
+    "metric_name": "Reefer Temp Breach-Free Trips %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": null,
+    "direction": "higher_is_better",
+    "source_note": null,
+    "linked_area_id": "RM9.1"
+  },
+  {
+    "metric_id": "op_trip_completion",
+    "metric_name": "Trip Completion Rate %",
+    "group": "operational",
+    "unit": "%",
+    "best_in_class": null,
+    "direction": "higher_is_better",
+    "source_note": null,
+    "linked_area_id": "RM7.2"
+  }
+]

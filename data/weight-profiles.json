@@ -1,0 +1,86 @@
+[
+  {
+    "id": "cost_sensitive",
+    "name": "Cost-sensitive",
+    "description": "Optimizes for the lowest cost at scale - supplying the network efficiently, maximizing utilization, and sizing fleet/capacity economically.",
+    "module_weights": {
+      "RM1": 0.08823529411764704,
+      "RM2": 0.04411764705882352,
+      "RM3": 0.05882352941176469,
+      "RM4": 0.06617647058823528,
+      "RM5": 0.14705882352941174,
+      "RM6": 0.14705882352941174,
+      "RM7": 0.05882352941176469,
+      "RM8": 0.14705882352941174,
+      "RM9": 0.04411764705882352,
+      "RM10": 0.04411764705882352,
+      "RM11": 0.029411764705882346,
+      "RM12": 0.029411764705882346,
+      "RM13": 0.07352941176470587,
+      "RM14": 0.02205882352941176
+    }
+  },
+  {
+    "id": "process_sensitive",
+    "name": "Process-sensitive",
+    "description": "Wants a dependable, controlled, repeatable operation - disciplined planning, a defined cadence, and continuous root-cause improvement.",
+    "module_weights": {
+      "RM1": 0.20689655172413793,
+      "RM2": 0.10344827586206896,
+      "RM3": 0.055172413793103454,
+      "RM4": 0.15517241379310343,
+      "RM5": 0.055172413793103454,
+      "RM6": 0.055172413793103454,
+      "RM7": 0.055172413793103454,
+      "RM8": 0.055172413793103454,
+      "RM9": 0.041379310344827586,
+      "RM10": 0.041379310344827586,
+      "RM11": 0.027586206896551727,
+      "RM12": 0.027586206896551727,
+      "RM13": 0.06896551724137931,
+      "RM14": 0.05172413793103448
+    }
+  },
+  {
+    "id": "quality_sensitive",
+    "name": "Quality-sensitive",
+    "description": "Prioritizes protecting availability and the customer promise at the store level - shelf outcomes, cold chain, and service reliability.",
+    "module_weights": {
+      "RM1": 0.08823529411764705,
+      "RM2": 0.044117647058823525,
+      "RM3": 0.058823529411764705,
+      "RM4": 0.06617647058823528,
+      "RM5": 0.058823529411764705,
+      "RM6": 0.058823529411764705,
+      "RM7": 0.14705882352941177,
+      "RM8": 0.058823529411764705,
+      "RM9": 0.1102941176470588,
+      "RM10": 0.044117647058823525,
+      "RM11": 0.029411764705882353,
+      "RM12": 0.029411764705882353,
+      "RM13": 0.1838235294117647,
+      "RM14": 0.022058823529411763
+    }
+  },
+  {
+    "id": "balanced",
+    "name": "Balanced",
+    "description": "Continuously balances service, cost, capacity, inventory and responsiveness across the whole network - no single lever dominates.",
+    "module_weights": {
+      "RM1": 0.12,
+      "RM2": 0.06,
+      "RM3": 0.08,
+      "RM4": 0.09,
+      "RM5": 0.08,
+      "RM6": 0.08,
+      "RM7": 0.08,
+      "RM8": 0.08,
+      "RM9": 0.06,
+      "RM10": 0.06,
+      "RM11": 0.04,
+      "RM12": 0.04,
+      "RM13": 0.1,
+      "RM14": 0.03
+    }
+  }
+]

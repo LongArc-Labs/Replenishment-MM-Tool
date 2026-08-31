@@ -1,0 +1,143 @@
+[
+  {
+    "module_id": "RM1",
+    "module_name": "Replenishment Demand & Supply Planning",
+    "module_weight": 0.12,
+    "area_ids": [
+      "RM1.1",
+      "RM1.2",
+      "RM1.3",
+      "RM1.4",
+      "RM1.5"
+    ]
+  },
+  {
+    "module_id": "RM2",
+    "module_name": "Replenishment Cycle & Inventory Position Tracking",
+    "module_weight": 0.06,
+    "area_ids": [
+      "RM2.1",
+      "RM2.2",
+      "RM2.3"
+    ]
+  },
+  {
+    "module_id": "RM3",
+    "module_name": "Network Design & Route Planning",
+    "module_weight": 0.08,
+    "area_ids": [
+      "RM3.1",
+      "RM3.2",
+      "RM3.3"
+    ]
+  },
+  {
+    "module_id": "RM4",
+    "module_name": "Dispatch / Wave Planning",
+    "module_weight": 0.09,
+    "area_ids": [
+      "RM4.1",
+      "RM4.2",
+      "RM4.3"
+    ]
+  },
+  {
+    "module_id": "RM5",
+    "module_name": "Fleet Capacity & Availability",
+    "module_weight": 0.08,
+    "area_ids": [
+      "RM5.1",
+      "RM5.2",
+      "RM5.3"
+    ]
+  },
+  {
+    "module_id": "RM6",
+    "module_name": "Utilization & Efficiency",
+    "module_weight": 0.08,
+    "area_ids": [
+      "RM6.1",
+      "RM6.2",
+      "RM6.3"
+    ]
+  },
+  {
+    "module_id": "RM7",
+    "module_name": "Service Reliability",
+    "module_weight": 0.08,
+    "area_ids": [
+      "RM7.1",
+      "RM7.2",
+      "RM7.3"
+    ]
+  },
+  {
+    "module_id": "RM8",
+    "module_name": "Cost Discipline",
+    "module_weight": 0.08,
+    "area_ids": [
+      "RM8.1",
+      "RM8.2",
+      "RM8.3"
+    ]
+  },
+  {
+    "module_id": "RM9",
+    "module_name": "Cold Chain / Product Integrity",
+    "module_weight": 0.06,
+    "area_ids": [
+      "RM9.1",
+      "RM9.2",
+      "RM9.3"
+    ]
+  },
+  {
+    "module_id": "RM10",
+    "module_name": "Visibility & Control Tower",
+    "module_weight": 0.06,
+    "area_ids": [
+      "RM10.1",
+      "RM10.2",
+      "RM10.3"
+    ]
+  },
+  {
+    "module_id": "RM11",
+    "module_name": "Vendor / Carrier Management",
+    "module_weight": 0.04,
+    "area_ids": [
+      "RM11.1",
+      "RM11.2"
+    ]
+  },
+  {
+    "module_id": "RM12",
+    "module_name": "Safety & Compliance",
+    "module_weight": 0.04,
+    "area_ids": [
+      "RM12.1",
+      "RM12.2",
+      "RM12.3"
+    ]
+  },
+  {
+    "module_id": "RM13",
+    "module_name": "Replenishment Execution & Shelf Outcomes",
+    "module_weight": 0.1,
+    "area_ids": [
+      "RM13.1",
+      "RM13.2",
+      "RM13.3"
+    ]
+  },
+  {
+    "module_id": "RM14",
+    "module_name": "Root-Cause & Continuous Improvement",
+    "module_weight": 0.03,
+    "area_ids": [
+      "RM14.1",
+      "RM14.2",
+      "RM14.3"
+    ]
+  }
+]
