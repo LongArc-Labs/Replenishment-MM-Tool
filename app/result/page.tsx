@@ -154,16 +154,24 @@ export default function ResultPage() {
         <span className="badge badge-neutral">Not yet connected</span>
       </div>
       <p className="lead" style={{ marginBottom: 12 }}>
-        Structure ready for live operational data - these are placeholders,
-        not measurements. Values will populate automatically once a data
-        connection is in place.
+        Your own measured values aren&apos;t connected yet - the value line
+        stays blank until a data connection is in place. Best-in-Class is the
+        benchmark to score and plan against in the meantime.
       </p>
       <div className="grid grid-3">
         {benchmarks.map((b) => (
           <div className="metric-card metric-card-blank" key={b.metric_id}>
             <div className="label">{b.metric_name}</div>
             <div className="value snapshot-blank">—</div>
-            <div className="bic snapshot-blank">Best-in-Class: —</div>
+            <div className="bic">
+              Best-in-Class:{" "}
+              {b.best_in_class != null ? `${b.best_in_class} ${b.unit}` : "—"}
+            </div>
+            {b.source_note && (
+              <div className="bic" style={{ fontSize: 12, opacity: 0.75 }}>
+                {b.source_note}
+              </div>
+            )}
           </div>
         ))}
       </div>

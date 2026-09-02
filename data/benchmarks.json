@@ -24,9 +24,49 @@
     "metric_name": "Blended Middle-Mile Cost per Unit Dispatched",
     "group": "kpi",
     "unit": "₹/unit",
+    "best_in_class": 0.78,
+    "direction": "lower_is_better",
+    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison (total)",
+    "linked_area_id": "RM8.1"
+  },
+  {
+    "metric_id": "kpi_cost_per_unit_fnv",
+    "metric_name": "Middle-Mile Cost per Unit Dispatched - FnV",
+    "group": "kpi",
+    "unit": "₹/unit",
     "best_in_class": 0.91,
     "direction": "lower_is_better",
-    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison",
+    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison, FnV segment",
+    "linked_area_id": "RM8.1"
+  },
+  {
+    "metric_id": "kpi_cost_per_unit_dry",
+    "metric_name": "Middle-Mile Cost per Unit Dispatched - Dry",
+    "group": "kpi",
+    "unit": "₹/unit",
+    "best_in_class": 0.70,
+    "direction": "lower_is_better",
+    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison, Dry segment",
+    "linked_area_id": "RM8.1"
+  },
+  {
+    "metric_id": "kpi_cost_per_unit_fc",
+    "metric_name": "Middle-Mile Cost per Unit Dispatched - FC",
+    "group": "kpi",
+    "unit": "₹/unit",
+    "best_in_class": 2.07,
+    "direction": "lower_is_better",
+    "source_note": "Benchmarking sheet - FC blended-rate comparison (total)",
+    "linked_area_id": "RM8.1"
+  },
+  {
+    "metric_id": "kpi_cost_per_unit_fnv_target_zepto",
+    "metric_name": "Middle-Mile Cost per Unit Dispatched - FnV Target (Zepto)",
+    "group": "kpi",
+    "unit": "₹/unit",
+    "best_in_class": 0.90,
+    "direction": "lower_is_better",
+    "source_note": "Target shared by Himansu, 2026-09-02 - not yet an observed benchmark",
     "linked_area_id": "RM8.1"
   },
   {
@@ -158,5 +198,15 @@
     "direction": "higher_is_better",
     "source_note": null,
     "linked_area_id": "RM7.2"
+  },
+  {
+    "metric_id": "op_crates_per_vehicle",
+    "metric_name": "Crates per Vehicle (5T)",
+    "group": "operational",
+    "unit": "crates/vehicle",
+    "best_in_class": 100,
+    "direction": "higher_is_better",
+    "source_note": "Benchmarking sheet - Blinkit 5T vehicle, 85 normal/15 chiller crates, 2000-2500 units/vehicle",
+    "linked_area_id": "RM6.1"
   }
 ]

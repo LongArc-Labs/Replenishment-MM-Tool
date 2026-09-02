@@ -648,28 +648,28 @@
     "area_id": "RM8.1",
     "target_level": 2,
     "target_level_name": "Basic",
-    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Unit costs calculated occasionally/manually but not tracked as a standing metric\n- No visibility into the gap vs the ~Rs 0.91/unit blended benchmark"
+    "recommended_tasks": "To reach Level 2 (Basic), ensure the following are true:\n- Unit costs calculated occasionally/manually but not tracked as a standing metric\n- No visibility into the gap vs the ~Rs 0.78/unit blended benchmark (FnV segment ~Rs 0.91/unit, Dry ~Rs 0.70/unit)"
   },
   {
     "module_id": "RM8",
     "area_id": "RM8.1",
     "target_level": 3,
     "target_level_name": "Standardized",
-    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Cost per km, per trip, and per unit moved is tracked monthly against an internal baseline\n- Current blended cost is approximately Rs 1.00/unit, tracked but not yet actively closed against the Rs 0.91/unit benchmark"
+    "recommended_tasks": "To reach Level 3 (Standardized), ensure the following are true:\n- Cost per km, per trip, and per unit moved is tracked monthly against an internal baseline\n- Current blended cost is approximately Rs 1.00/unit, tracked but not yet actively closed against the Rs 0.78/unit benchmark"
   },
   {
     "module_id": "RM8",
     "area_id": "RM8.1",
     "target_level": 4,
     "target_level_name": "Managed",
-    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Unit costs tracked per lane/vehicle type, with variance from both the internal baseline and the Rs 0.91/unit benchmark investigated monthly\n- A documented gap-closure plan exists"
+    "recommended_tasks": "To reach Level 4 (Managed), ensure the following are true:\n- Unit costs tracked per lane/vehicle type, with variance from both the internal baseline and the Rs 0.78/unit benchmark investigated monthly\n- A documented gap-closure plan exists"
   },
   {
     "module_id": "RM8",
     "area_id": "RM8.1",
     "target_level": 5,
     "target_level_name": "Best-in-class",
-    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Unit costs tracked in near-real-time with automated variance alerts\n- Blended cost per unit at or below the Rs 0.91/unit benchmark, or a documented, funded, time-bound plan is in place to reach it"
+    "recommended_tasks": "To reach Level 5 (Best-in-class), ensure the following are true:\n- Unit costs tracked in near-real-time with automated variance alerts\n- Blended cost per unit at or below the Rs 0.78/unit benchmark, or a documented, funded, time-bound plan is in place to reach it"
   },
   {
     "module_id": "RM8",

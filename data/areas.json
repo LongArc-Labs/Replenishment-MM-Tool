@@ -447,16 +447,16 @@
     "area_weight": 0.3333375,
     "score_descs": [
       "- Transportation cost tracked only at a total/aggregate level, with no per-km, per-trip, or per-unit breakdown\n- No basis to compare against any benchmark",
-      "- Unit costs calculated occasionally/manually but not tracked as a standing metric\n- No visibility into the gap vs the ~Rs 0.91/unit blended benchmark",
-      "- Cost per km, per trip, and per unit moved is tracked monthly against an internal baseline\n- Current blended cost is approximately Rs 1.00/unit, tracked but not yet actively closed against the Rs 0.91/unit benchmark",
-      "- Unit costs tracked per lane/vehicle type, with variance from both the internal baseline and the Rs 0.91/unit benchmark investigated monthly\n- A documented gap-closure plan exists",
-      "- Unit costs tracked in near-real-time with automated variance alerts\n- Blended cost per unit at or below the Rs 0.91/unit benchmark, or a documented, funded, time-bound plan is in place to reach it"
+      "- Unit costs calculated occasionally/manually but not tracked as a standing metric\n- No visibility into the gap vs the ~Rs 0.78/unit blended benchmark (FnV segment ~Rs 0.91/unit, Dry ~Rs 0.70/unit)",
+      "- Cost per km, per trip, and per unit moved is tracked monthly against an internal baseline\n- Current blended cost is approximately Rs 1.00/unit, tracked but not yet actively closed against the Rs 0.78/unit benchmark",
+      "- Unit costs tracked per lane/vehicle type, with variance from both the internal baseline and the Rs 0.78/unit benchmark investigated monthly\n- A documented gap-closure plan exists",
+      "- Unit costs tracked in near-real-time with automated variance alerts\n- Blended cost per unit at or below the Rs 0.78/unit benchmark, or a documented, funded, time-bound plan is in place to reach it"
     ],
     "indicative_scoring_questions": [
       "Is true cost per km, per trip, and per unit moved tracked?",
-      "How does the blended cost per unit compare to the ~Rs 0.91/unit external benchmark, and is there a plan to close any gap?"
+      "How does the blended cost per unit compare to the ~Rs 0.78/unit external benchmark (FnV ~Rs 0.91/unit, Dry ~Rs 0.70/unit), and is there a plan to close any gap?"
     ],
-    "primary_kpi_metric": "Cost per km / per trip / per unit moved. Benchmark: blended middle-mile cost per unit dispatched - reported at ~Rs 1.00/unit internally vs ~Rs 0.91/unit at Blinkit (blended-rate comparison)."
+    "primary_kpi_metric": "Cost per km / per trip / per unit moved. Benchmark: blended middle-mile cost per unit dispatched - reported at ~Rs 1.00/unit internally vs ~Rs 0.78/unit at Blinkit (blended-rate comparison; FnV ~Rs 0.91/unit, Dry ~Rs 0.70/unit)."
   },
   {
     "module_id": "RM8",

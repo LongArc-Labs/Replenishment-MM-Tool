@@ -1,5 +1,5 @@
 import Groq from "groq-sdk";
-import type { AreaRow } from "@/lib/types";
+import type { AreaRow, BenchmarkRow } from "@/lib/types";
 
 export interface AutoScoreResult {
   score: number;
@@ -17,7 +17,8 @@ const MODEL = "openai/gpt-oss-120b";
  */
 export async function scoreWithGroq(
   area: AreaRow,
-  observation: string
+  observation: string,
+  benchmarks: BenchmarkRow[] = []
 ): Promise<AutoScoreResult | null> {
   const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey || !observation.trim()) return null;
@@ -29,6 +30,17 @@ export async function scoreWithGroq(
       .map((desc, i) => `Level ${i + 1}:\n${desc}`)
       .join("\n\n");
 
+    const benchmarkBlock = benchmarks.length
+      ? `\n\nRelevant benchmarks for this area (use these to judge how the observation's own figures compare to best-in-class - close to or better than best-in-class supports a higher level, materially worse supports a lower level):\n${benchmarks
+          .map(
+            (b) =>
+              `- ${b.metric_name}: best-in-class ${b.best_in_class ?? "n/a"} ${b.unit} (${b.direction})${
+                b.source_note ? ` [${b.source_note}]` : ""
+              }`
+          )
+          .join("\n")}`
+      : "";
+
     const completion = await groq.chat.completions.create({
       model: MODEL,
       temperature: 0,
@@ -38,11 +50,13 @@ export async function scoreWithGroq(
           role: "system",
           content:
             "You are a supply-chain maturity assessor. Given a 5-level rubric and a field observation, " +
-            'pick the single best-fitting level and explain why in 1-3 sentences. Respond with strict JSON: {"score": <1-5 integer>, "rationale": "<string>"}.',
+            "pick the single best-fitting level and explain why in 1-3 sentences. When benchmarks are " +
+            "provided and the observation states a comparable figure, weigh how that figure sits relative " +
+            'to the benchmark when picking the level. Respond with strict JSON: {"score": <1-5 integer>, "rationale": "<string>"}.',
         },
         {
           role: "user",
-          content: `Area: ${area.area_name}\n\nRubric:\n${rubric}\n\nObservation:\n${observation}`,
+          content: `Area: ${area.area_name}\n\nRubric:\n${rubric}${benchmarkBlock}\n\nObservation:\n${observation}`,
         },
       ],
     });
