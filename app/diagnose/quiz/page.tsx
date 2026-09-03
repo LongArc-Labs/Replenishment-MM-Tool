@@ -43,7 +43,7 @@ export default function QuizPage() {
 
   return (
     <main className="page reveal">
-      <h1>Company Profile Quiz</h1>
+      <h1>Priorities</h1>
       <p className="lead">
         {answeredCount}/{questions.length} answered - these responses shape
         how the diagnostic prioritizes across modules.

@@ -1,52 +1,62 @@
 [
   {
-    "id": "q1_cost_vs_availability",
-    "question": "Raise availability to 99% despite +15% cost?",
+    "id": "q1_availability_trip_cost",
+    "question": "If moving from 97% to 99% Dark Store availability requires 2 additional replenishment trips per day and increases transportation cost by 12%, what would the business prefer?",
     "options": [
-      { "id": "a", "label": "Yes - always dispatch extra trips for 99%.", "affinity": { "quality_sensitive": 1 } },
-      { "id": "b", "label": "No - hold at 97%, skip the extra 15%.", "affinity": { "process_sensitive": 1 } },
-      { "id": "c", "label": "Only for top stores or critical SKUs.", "affinity": { "cost_sensitive": 1 } },
-      { "id": "d", "label": "Only if extra sales beat the 15% cost.", "affinity": { "balanced": 1 } }
+      { "id": "a", "label": "Accept the 12% increase - 99% availability is worth the additional cost.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "b", "label": "Accept the increase only if 99% can be achieved consistently within the planned operating model.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Accept it only for high-value / high-velocity stores and critical SKUs.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "d", "label": "Do not accept the increase unless the additional sales or margin generated covers the 12% cost.", "affinity": { "balanced": 1 } }
     ]
   },
   {
-    "id": "q2_inbound_vs_replenishment",
-    "question": "Inbound truck or urgent Dark Store - priority?",
+    "id": "q2_stockout_utilization",
+    "question": "A Dark Store is projected to stock out 90 minutes before its next planned vehicle. An additional trip would run at only 40% vehicle utilization. What should happen?",
     "options": [
-      { "id": "a", "label": "Send it to the Dark Store now.", "affinity": { "quality_sensitive": 1 } },
-      { "id": "b", "label": "Unload inbound first - 3-hour dock queue stands.", "affinity": { "process_sensitive": 1 } },
-      { "id": "c", "label": "Whichever SKU stocks out within the hour.", "affinity": { "cost_sensitive": 1 } },
-      { "id": "d", "label": "Whichever move protects more sales today.", "affinity": { "balanced": 1 } }
+      { "id": "a", "label": "Send the vehicle - protecting availability takes priority over utilization.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "b", "label": "Send it only if the situation crosses a predefined stockout/service threshold.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Send it if the affected products are critical or time-sensitive.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "d", "label": "Wait for the planned trip unless the expected loss is greater than the cost of the additional trip.", "affinity": { "balanced": 1 } }
     ]
   },
   {
-    "id": "q3_fnv_freshness_premium",
-    "question": "Pay double for reefer to save freshness?",
+    "id": "q3_frequency_cost",
+    "question": "If increasing replenishment from 3 to 5 trips per day improves availability by 1–2 percentage points but increases middle-mile cost by 8–10%, what is the preferred position?",
     "options": [
-      { "id": "a", "label": "Yes - always use reefer, no matter cost.", "affinity": { "quality_sensitive": 1 } },
-      { "id": "b", "label": "Only when temperature would exceed 4°C.", "affinity": { "process_sensitive": 1 } },
-      { "id": "c", "label": "Only for FnV lines, not staples.", "affinity": { "cost_sensitive": 1 } },
-      { "id": "d", "label": "Only if spoilage loss tops the extra cost.", "affinity": { "balanced": 1 } }
+      { "id": "a", "label": "Increase to 5 trips - higher availability is worth the cost.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "b", "label": "Maintain 3 trips unless the additional frequency can be incorporated into a standardized operating cycle.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Increase frequency selectively for fast-moving or sensitive products/stores.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "d", "label": "Increase frequency only if the incremental commercial benefit exceeds the incremental transportation cost.", "affinity": { "balanced": 1 } }
     ]
   },
   {
-    "id": "q4_utilization_vs_availability",
-    "question": "Truck 60% full - dispatch now or wait?",
+    "id": "q4_reefer_premium",
+    "question": "A reefer vehicle costs 15% more than a standard vehicle but reduces temperature/freshness risk for FnV. How should the business view the premium?",
     "options": [
-      { "id": "a", "label": "Dispatch now - protect the store from stockout.", "affinity": { "quality_sensitive": 1 } },
-      { "id": "b", "label": "Wait for the next 90%-full load.", "affinity": { "cost_sensitive": 1 } },
-      { "id": "c", "label": "Dispatch only if the SKU is critical.", "affinity": { "process_sensitive": 1 } },
-      { "id": "d", "label": "Wait unless stockout costs more than the trip.", "affinity": { "balanced": 1 } }
+      { "id": "a", "label": "Pay the premium whenever required; product integrity should not be compromised.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "b", "label": "Pay it when required by defined product and temperature standards.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Pay it selectively for products where freshness materially affects customer value or shelf life.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "d", "label": "Pay it only where the value of reduced spoilage / quality loss exceeds the 15% premium.", "affinity": { "balanced": 1 } }
     ]
   },
   {
-    "id": "q5_ultimate_lever",
-    "question": "Improve just one - which matters most?",
+    "id": "q5_peak_capacity",
+    "question": "Peak-day demand can be 40% higher than average. Maintaining enough dedicated capacity for the peak would leave vehicles underutilized on normal days. What should the business prefer?",
     "options": [
-      { "id": "a", "label": "Fewer stockouts - availability.", "affinity": { "quality_sensitive": 1 } },
-      { "id": "b", "label": "Predictable, on-time execution - reliability.", "affinity": { "process_sensitive": 1 } },
-      { "id": "c", "label": "Better freshness and condition - product integrity.", "affinity": { "quality_sensitive": 1 } },
-      { "id": "d", "label": "Lower cost per unit - efficiency.", "affinity": { "cost_sensitive": 1 } }
+      { "id": "a", "label": "Maintain the peak capacity - protecting availability during peak periods is worth the normal-day underutilization.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "b", "label": "Maintain capacity against a defined planning standard and handle exceptional peaks through controlled mechanisms.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Maintain additional capacity for critical stores/products and flex the rest.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "d", "label": "Use flexible/spot capacity during peaks rather than carrying the cost of permanent excess capacity.", "affinity": { "balanced": 1 } }
+    ]
+  },
+  {
+    "id": "q6_utilization_dispatch",
+    "question": "A replenishment vehicle can either depart at 65% utilization immediately or wait 45 minutes to reach 90% utilization. Which outcome is preferred?",
+    "options": [
+      { "id": "a", "label": "Depart at 65% - inventory should move immediately.", "affinity": { "quality_sensitive": 1 } },
+      { "id": "b", "label": "Follow the planned dispatch window and utilization standard.", "affinity": { "process_sensitive": 1 } },
+      { "id": "c", "label": "Decide based on the urgency and importance of the inventory being moved.", "affinity": { "cost_sensitive": 1 } },
+      { "id": "d", "label": "Wait for 90% utilization unless the cost of the delay exceeds the transportation saving.", "affinity": { "balanced": 1 } }
     ]
   }
 ]
