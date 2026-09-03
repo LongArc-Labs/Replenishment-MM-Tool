@@ -151,12 +151,11 @@ export default function ResultPage() {
 
       <div style={{ display: "flex", alignItems: "center", gap: 10, marginTop: 28 }}>
         <h2 style={{ margin: 0 }}>Snapshot</h2>
-        <span className="badge badge-neutral">Not yet connected</span>
+        <span className="badge badge-neutral">Awaiting live data</span>
       </div>
       <p className="lead" style={{ marginBottom: 12 }}>
-        Your own measured values aren&apos;t connected yet - the value line
-        stays blank until a data connection is in place. Best-in-Class is the
-        benchmark to score and plan against in the meantime.
+        These are external Best-in-Class benchmarks. Your own live values will
+        appear here once connected.
       </p>
       <div className="grid grid-3">
         {benchmarks.map((b) => (

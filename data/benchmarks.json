@@ -26,7 +26,7 @@
     "unit": "₹/unit",
     "best_in_class": 0.78,
     "direction": "lower_is_better",
-    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison (total)",
+    "source_note": "Blinkit blended-rate comparison (total)",
     "linked_area_id": "RM8.1"
   },
   {
@@ -36,7 +36,7 @@
     "unit": "₹/unit",
     "best_in_class": 0.91,
     "direction": "lower_is_better",
-    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison, FnV segment",
+    "source_note": "Blinkit blended-rate comparison, FnV segment",
     "linked_area_id": "RM8.1"
   },
   {
@@ -44,9 +44,9 @@
     "metric_name": "Middle-Mile Cost per Unit Dispatched - Dry",
     "group": "kpi",
     "unit": "₹/unit",
-    "best_in_class": 0.70,
+    "best_in_class": 0.7,
     "direction": "lower_is_better",
-    "source_note": "Benchmarking sheet - Blinkit blended-rate comparison, Dry segment",
+    "source_note": "Blinkit blended-rate comparison, Dry segment",
     "linked_area_id": "RM8.1"
   },
   {
@@ -56,7 +56,7 @@
     "unit": "₹/unit",
     "best_in_class": 2.07,
     "direction": "lower_is_better",
-    "source_note": "Benchmarking sheet - FC blended-rate comparison (total)",
+    "source_note": "FC blended-rate comparison (total)",
     "linked_area_id": "RM8.1"
   },
   {
@@ -64,9 +64,9 @@
     "metric_name": "Middle-Mile Cost per Unit Dispatched - FnV Target (Zepto)",
     "group": "kpi",
     "unit": "₹/unit",
-    "best_in_class": 0.90,
+    "best_in_class": 0.9,
     "direction": "lower_is_better",
-    "source_note": "Target shared by Himansu, 2026-09-02 - not yet an observed benchmark",
+    "source_note": null,
     "linked_area_id": "RM8.1"
   },
   {
@@ -76,7 +76,7 @@
     "unit": "%",
     "best_in_class": 99,
     "direction": "higher_is_better",
-    "source_note": "Benchmarking sheet - Instamart on-time arrival adherence",
+    "source_note": "Instamart on-time arrival adherence",
     "linked_area_id": "RM7.1"
   },
   {
@@ -136,7 +136,7 @@
     "unit": "%",
     "best_in_class": 80,
     "direction": "higher_is_better",
-    "source_note": "Benchmarking sheet - Instamart vehicle utilization",
+    "source_note": "Instamart vehicle utilization",
     "linked_area_id": "RM6.1"
   },
   {
@@ -146,7 +146,7 @@
     "unit": "%",
     "best_in_class": 95,
     "direction": "higher_is_better",
-    "source_note": "Benchmarking sheet - Zepto inbound fill rate",
+    "source_note": "Zepto inbound fill rate",
     "linked_area_id": null
   },
   {
@@ -156,7 +156,7 @@
     "unit": "%",
     "best_in_class": 2,
     "direction": "lower_is_better",
-    "source_note": "Benchmarking sheet - Zepto dispatch vs received gap",
+    "source_note": "Zepto dispatch vs received gap",
     "linked_area_id": "RM7.1"
   },
   {
@@ -206,7 +206,7 @@
     "unit": "crates/vehicle",
     "best_in_class": 100,
     "direction": "higher_is_better",
-    "source_note": "Benchmarking sheet - Blinkit 5T vehicle, 85 normal/15 chiller crates, 2000-2500 units/vehicle",
+    "source_note": "Blinkit 5T vehicle, 85 normal/15 chiller crates, 2000-2500 units/vehicle",
     "linked_area_id": "RM6.1"
   }
 ]
