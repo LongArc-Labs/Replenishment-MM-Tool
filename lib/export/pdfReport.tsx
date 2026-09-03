@@ -3,6 +3,14 @@ import { getBenchmarks, getRecommendation } from "@/lib/kb";
 import { targetLevelFor } from "@/lib/aggregate";
 import type { DiagnosticResult } from "@/lib/types";
 
+// react-pdf's built-in Helvetica is a base-14 PDF font (WinAnsi encoding) -
+// it has no ₹ glyph, so it silently substitutes garbage (renders as "¹").
+// Swap in the ASCII "Rs" for this PDF specifically rather than embedding a
+// custom Unicode font just for one symbol.
+function formatUnit(unit: string): string {
+  return unit.replace(/₹/g, "Rs");
+}
+
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 10, fontFamily: "Helvetica" },
   h1: { fontSize: 20, marginBottom: 4, fontWeight: 700 },
@@ -53,8 +61,8 @@ function ReportDoc({ result }: { result: DiagnosticResult }) {
       <Page size="A4" style={styles.page}>
         <Text style={styles.h1}>Snapshot</Text>
         <Text style={styles.muted}>
-          Structure ready for live operational data - values will populate
-          automatically once a data connection is in place.
+          These are external Best-in-Class benchmarks. Your own live values
+          will appear here once connected.
         </Text>
         <Text style={styles.h2}>KPIs</Text>
         {benchmarks
@@ -62,7 +70,15 @@ function ReportDoc({ result }: { result: DiagnosticResult }) {
           .map((b) => (
             <View style={styles.card} key={b.metric_id}>
               <Text>{b.metric_name}</Text>
-              <Text style={styles.muted}>Current: — | Best-in-Class: —</Text>
+              <Text style={styles.muted}>
+                Best-in-Class:{" "}
+                {b.best_in_class != null ? `${b.best_in_class} ${formatUnit(b.unit)}` : "—"}
+              </Text>
+              {b.source_note && (
+                <Text style={{ ...styles.muted, fontSize: 8.5 }}>
+                  {b.source_note}
+                </Text>
+              )}
             </View>
           ))}
         <Text style={styles.h2}>Operational</Text>
@@ -71,7 +87,15 @@ function ReportDoc({ result }: { result: DiagnosticResult }) {
           .map((b) => (
             <View style={styles.card} key={b.metric_id}>
               <Text>{b.metric_name}</Text>
-              <Text style={styles.muted}>Current: — | Best-in-Class: —</Text>
+              <Text style={styles.muted}>
+                Best-in-Class:{" "}
+                {b.best_in_class != null ? `${b.best_in_class} ${formatUnit(b.unit)}` : "—"}
+              </Text>
+              {b.source_note && (
+                <Text style={{ ...styles.muted, fontSize: 8.5 }}>
+                  {b.source_note}
+                </Text>
+              )}
             </View>
           ))}
       </Page>
