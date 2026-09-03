@@ -6,6 +6,7 @@ import Link from "next/link";
 import { getModule, getAreasByModule, getModules } from "@/lib/kb";
 import { useDiagnostic } from "@/state/DiagnosticContext";
 import { effectiveScore } from "@/lib/types";
+import { findNextIncompleteModule } from "@/lib/flow";
 import type { IndicativeAnswer } from "@/lib/types";
 
 export default function ScoreModulePage() {
@@ -15,6 +16,7 @@ export default function ScoreModulePage() {
   const areas = useMemo(() => getAreasByModule(moduleId), [moduleId]);
   const {
     isModuleSelected,
+    selectedAreaIds,
     completedAreaIds,
     submitAreaAnswers,
     setManualScoreOverride,
@@ -214,10 +216,31 @@ export default function ScoreModulePage() {
 
       if (nextModule) {
         router.push(`/diagnose/score/${nextModule.module_id}`);
-      } else {
-        runDiagnosticNow();
-        router.push("/result");
+        return;
       }
+
+      // "Last selected module" is only a position in orderedSelectedModules -
+      // the jump-nav lets a module be reached out of that order, so being
+      // "last" here doesn't mean every OTHER selected module is actually
+      // done. Check the real completion state before finishing, the same
+      // way Select Areas' "Start Assessment" and Result's "Re-run" already
+      // do, rather than silently rolling up whatever is still unscored as
+      // a floor-score 1.
+      const effectiveCompletedIds = [
+        ...completedAreaIds,
+        ...areas.map((a) => a.area_id),
+      ];
+      const nextIncomplete = findNextIncompleteModule(
+        selectedAreaIds,
+        effectiveCompletedIds
+      );
+      if (nextIncomplete && nextIncomplete.module_id !== moduleId) {
+        router.push(`/diagnose/score/${nextIncomplete.module_id}`);
+        return;
+      }
+
+      runDiagnosticNow();
+      router.push("/result");
     } finally {
       setSubmitting(false);
     }
@@ -299,6 +322,15 @@ export default function ScoreModulePage() {
                     title="The automatic scoring call failed and this topic was defaulted to Level 1. Set a manual score below to replace it, or edit an answer to retry."
                   >
                     Auto-score unavailable - defaulted
+                  </span>
+                )}
+                {entry?.not_applicable && entry.manual_score == null && (
+                  <span
+                    className="badge badge-neutral"
+                    style={{ marginLeft: 8 }}
+                    title="Every question here was marked NA, so this topic is excluded from the overall score entirely rather than scored as a failure. Set a manual score below if you'd rather have it count."
+                  >
+                    Not applicable - excluded from score
                   </span>
                 )}
               </div>

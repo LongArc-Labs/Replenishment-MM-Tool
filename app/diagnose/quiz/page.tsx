@@ -42,39 +42,49 @@ export default function QuizPage() {
   }
 
   return (
-    <main className="page reveal">
+    <main className="page reveal quiz-page">
       <h1>Priorities</h1>
       <p className="lead">
         {answeredCount}/{questions.length} answered - these responses shape
         how the diagnostic prioritizes across modules.
       </p>
 
-      <div className="progress-track" style={{ marginBottom: 24 }}>
+      <div className="progress-track" style={{ marginBottom: 28 }}>
         <div
           className="progress-fill"
           style={{ width: `${((step + 1) / questions.length) * 100}%` }}
         />
       </div>
 
-      <div className="card">
-        <h2>{q.question}</h2>
-        {q.options.map((opt) => (
-          <label
-            key={opt.id}
-            className={`option${selected.includes(opt.id) ? " selected" : ""}`}
-          >
-            <input
-              type="radio"
-              name={q.id}
-              checked={selected.includes(opt.id)}
-              onChange={() => selectOption(opt.id)}
-            />
-            {opt.label}
-          </label>
-        ))}
+      <div className="card quiz-card">
+        <span className="quiz-step">
+          Question {step + 1} of {questions.length}
+        </span>
+        <h2 className="quiz-question">{q.question}</h2>
+        <div className="quiz-options">
+          {q.options.map((opt, i) => (
+            <label
+              key={opt.id}
+              className={`option quiz-option${
+                selected.includes(opt.id) ? " selected" : ""
+              }`}
+            >
+              <input
+                type="radio"
+                name={q.id}
+                checked={selected.includes(opt.id)}
+                onChange={() => selectOption(opt.id)}
+              />
+              <span className="quiz-option-letter">
+                {String.fromCharCode(65 + i)}
+              </span>
+              <span className="quiz-option-label">{opt.label}</span>
+            </label>
+          ))}
+        </div>
       </div>
 
-      <div className="btn-row">
+      <div className="btn-row quiz-btn-row">
         <button
           className="btn btn-secondary"
           disabled={step === 0}

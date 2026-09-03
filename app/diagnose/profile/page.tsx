@@ -41,12 +41,11 @@ export default function ProfilePage() {
 
   return (
     <main className="page reveal">
-      <h1>Profile {profileLocked ? "Verified" : "Verification"}</h1>
+      <h1>Priority Weighting{profileLocked ? " (Verified)" : ""}</h1>
       <p className="lead">
-        Based on your quiz answers, this is how much each module counts
-        toward the overall score. This is calculated by the system and
-        can&apos;t be edited manually - it keeps the priority order
-        consistent with how you described the business.
+        Module weight is set automatically from your Priorities answers, so
+        it can&apos;t be edited by hand - this keeps scoring aligned with how
+        you actually run the business.
       </p>
 
       {profileMix.length > 0 && (
@@ -58,7 +57,7 @@ export default function ProfilePage() {
             marginBottom: 24,
           }}
         >
-          Your quiz answers landed closest to{" "}
+          Your answers map to{" "}
           {profileMix.map((p, i) => (
             <span key={p.name}>
               {i > 0 && (i === profileMix.length - 1 ? " and " : ", ")}
@@ -66,9 +65,8 @@ export default function ProfilePage() {
                 {Math.round(p.pct)}% {p.name}
               </strong>
             </span>
-          ))}{" "}
-          - the weights below are pulled toward whichever modules that mix
-          cares about most.
+          ))}
+          . Weights below lean toward the modules that mix values most.
         </p>
       )}
 
@@ -97,11 +95,6 @@ export default function ProfilePage() {
                 {direction === "up" ? "↑" : direction === "down" ? "↓" : "–"}
               </span>
               <div className="pct">{pct.toFixed(1)}%</div>
-              <span className={`delta-note ${direction}`}>
-                {direction === "flat"
-                  ? "baseline"
-                  : `${deltaPp > 0 ? "+" : ""}${deltaPp.toFixed(1)}pp vs baseline`}
-              </span>
             </div>
           );
         })}

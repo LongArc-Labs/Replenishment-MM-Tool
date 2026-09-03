@@ -59,10 +59,34 @@ export default function ResultPage() {
     const entry = scores[a.area_id];
     return entry?.auto_failed && entry.manual_score == null;
   });
+  // Selected but never actually scored at all (e.g. reached via the score
+  // screen's jump-nav before its own module was completed) - a different,
+  // easier-to-miss case than an LLM call failing: there's no entry here to
+  // check auto_failed on, so it floors to Level 1 with nothing else to flag
+  // it. `scored` is computed in runDiagnostic for exactly this.
+  const unscoredAreas = result.areas.filter((a) => !a.scored);
 
   return (
     <main className="page reveal">
       <h1>Result</h1>
+
+      {unscoredAreas.length > 0 && (
+        <div
+          className="card"
+          style={{ borderColor: "var(--warn)", marginBottom: 16 }}
+        >
+          <p style={{ fontSize: 13.5 }}>
+            <strong>
+              {unscoredAreas.length} of {result.areas.length} area
+              {unscoredAreas.length === 1 ? "" : "s"} never scored
+            </strong>{" "}
+            - {unscoredAreas.length === 1 ? "it was" : "they were"} selected
+            but skipped entirely, and defaulted to Level 1 in the score
+            below. Answer {unscoredAreas.length === 1 ? "it" : "them"} on the
+            scoring screen, then re-run.
+          </p>
+        </div>
+      )}
 
       {defaultedAreas.length > 0 && (
         <div

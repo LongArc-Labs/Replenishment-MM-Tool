@@ -7,13 +7,6 @@ import { useDiagnostic } from "@/state/DiagnosticContext";
 import { prioritizedGaps, targetLevelFor } from "@/lib/aggregate";
 import { getArea, getRecommendation } from "@/lib/kb";
 import { findNextIncompleteModule } from "@/lib/flow";
-import type { PlanStatus } from "@/lib/types";
-
-const STATUS_LABELS: Record<PlanStatus, string> = {
-  not_started: "Not Started",
-  in_progress: "In Progress",
-  done: "Done",
-};
 
 function parseTasks(text: string): { intro: string; bullets: string[] } {
   const lines = text
@@ -37,8 +30,6 @@ export default function ActionPlanPage() {
   const {
     result,
     resultStale,
-    planItems,
-    updatePlanItem,
     selectedAreaIds,
     completedAreaIds,
     runDiagnosticNow,
@@ -77,7 +68,7 @@ export default function ActionPlanPage() {
       const res = await fetch(path, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ result, planItems }),
+        body: JSON.stringify({ result }),
       });
       const blob = await res.blob();
       const url = URL.createObjectURL(blob);
@@ -169,87 +160,10 @@ export default function ActionPlanPage() {
         );
       })}
 
-      <h2 style={{ marginTop: 32 }}>Tracker</h2>
-      <div className="card table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Priority</th>
-              <th>Area</th>
-              <th>Owner</th>
-              <th>Target Date</th>
-              <th>Status</th>
-              <th>Notes</th>
-            </tr>
-          </thead>
-          <tbody>
-            {planItems.map((item, i) => (
-              <tr key={item.id}>
-                <td>{i + 1}</td>
-                <td>
-                  <strong>{item.area_name}</strong>
-                  <div style={{ color: "var(--muted)", fontSize: 12 }}>
-                    {item.module_name}
-                  </div>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={item.owner}
-                    placeholder="Owner"
-                    onChange={(e) =>
-                      updatePlanItem(item.id, { owner: e.target.value })
-                    }
-                  />
-                </td>
-                <td>
-                  <input
-                    type="date"
-                    value={item.target_date ?? ""}
-                    onChange={(e) =>
-                      updatePlanItem(item.id, {
-                        target_date: e.target.value || null,
-                      })
-                    }
-                  />
-                </td>
-                <td>
-                  <select
-                    value={item.status}
-                    onChange={(e) =>
-                      updatePlanItem(item.id, {
-                        status: e.target.value as PlanStatus,
-                      })
-                    }
-                  >
-                    {Object.entries(STATUS_LABELS).map(([value, label]) => (
-                      <option key={value} value={value}>
-                        {label}
-                      </option>
-                    ))}
-                  </select>
-                </td>
-                <td>
-                  <input
-                    type="text"
-                    value={item.notes}
-                    placeholder="Notes"
-                    onChange={(e) =>
-                      updatePlanItem(item.id, { notes: e.target.value })
-                    }
-                  />
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-
-      <h2 style={{ marginTop: 28 }}>Export</h2>
+      <h2 style={{ marginTop: 32 }}>Export</h2>
       <p className="lead" style={{ marginTop: -8, marginBottom: 16 }}>
-        Each download is a snapshot of the tracker as it stands right now -
-        editing owner, status, or notes afterward won&apos;t update a file
-        you already downloaded. Export again to include later changes.
+        The download is a snapshot of the plan as it stands right now -
+        re-run the diagnostic first if anything&apos;s changed since.
       </p>
       <div className="btn-row" style={{ marginTop: 0 }}>
         <button
@@ -260,30 +174,6 @@ export default function ActionPlanPage() {
           }
         >
           {exporting === "pdf" ? "Generating…" : "Download PDF Report"}
-        </button>
-        <button
-          className="btn btn-secondary"
-          disabled={exporting === "checklist"}
-          onClick={() =>
-            download(
-              "/api/export/xlsx-checklist",
-              "scoring-checklist.xlsx",
-              "checklist"
-            )
-          }
-        >
-          {exporting === "checklist"
-            ? "Generating…"
-            : "Download Scoring Checklist (xlsx)"}
-        </button>
-        <button
-          className="btn btn-secondary"
-          disabled={exporting === "plan"}
-          onClick={() =>
-            download("/api/export/xlsx-plan", "plan-tracker.xlsx", "plan")
-          }
-        >
-          {exporting === "plan" ? "Generating…" : "Download Plan Tracker (xlsx)"}
         </button>
       </div>
     </main>

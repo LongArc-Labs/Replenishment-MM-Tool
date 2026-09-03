@@ -54,60 +54,6 @@ function Arrow() {
   );
 }
 
-function NetworkArt() {
-  const nodes = [
-    { x: 330, y: 70, r: 9 },
-    { x: 450, y: 190, r: 13 },
-    { x: 420, y: 370, r: 7 },
-    { x: 270, y: 440, r: 11 },
-  ];
-  const hub = { x: 60, y: 260 };
-
-  return (
-    <svg
-      className="hero-network"
-      viewBox="0 0 500 500"
-      preserveAspectRatio="xMidYMid meet"
-      aria-hidden="true"
-    >
-      {/* warehouse hub */}
-      <rect
-        x={hub.x - 46}
-        y={hub.y - 46}
-        width="92"
-        height="92"
-        rx="10"
-        fill="none"
-        stroke="white"
-        strokeOpacity="0.5"
-        strokeWidth="1.5"
-      />
-      <rect x={hub.x - 30} y={hub.y - 30} width="24" height="24" rx="3" fill="white" fillOpacity="0.18" />
-      <rect x={hub.x + 6} y={hub.y - 30} width="24" height="24" rx="3" fill="white" fillOpacity="0.12" />
-      <rect x={hub.x - 30} y={hub.y + 6} width="24" height="24" rx="3" fill="white" fillOpacity="0.12" />
-      <rect x={hub.x + 6} y={hub.y + 6} width="24" height="24" rx="3" fill="white" fillOpacity="0.18" />
-
-      {nodes.map((n, i) => (
-        <g key={i}>
-          <line
-            x1={hub.x}
-            y1={hub.y}
-            x2={n.x}
-            y2={n.y}
-            stroke="white"
-            strokeOpacity="0.28"
-            strokeWidth="1.2"
-            strokeDasharray="2 7"
-            className="flow-line"
-          />
-          <circle cx={n.x} cy={n.y} r={n.r} fill="none" stroke="white" strokeOpacity="0.55" strokeWidth="1.5" />
-          <circle cx={n.x} cy={n.y} r={n.r - 4 > 0 ? n.r - 4 : 2} fill="white" fillOpacity="0.15" />
-        </g>
-      ))}
-    </svg>
-  );
-}
-
 export default function HomePage() {
   const router = useRouter();
   const { reset, result, quizAnswers, selectedAreaIds, scores } =
@@ -145,8 +91,21 @@ export default function HomePage() {
   return (
     <main className="home-wrap reveal">
       <div className="hero">
-        <div className="hero-bg" />
-
+        <video
+          className="hero-bg-video"
+          src="/video/hero-bg.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+          ref={(el) => {
+            // React doesn't reliably set the `muted` PROPERTY from the JSX
+            // attribute on <video> - without it, Chrome's autoplay policy
+            // silently blocks the whole element from loading.
+            if (el) el.muted = true;
+          }}
+        />
         <div className="hero-top">
           <span className="hero-eyebrow">
             LongArc Labs &middot; Replenishment + Middle-Mile Diagnostic
@@ -163,10 +122,9 @@ export default function HomePage() {
               Know what to fix.
             </h1>
             <p className="hero-copy">
-              Diagnose replenishment performance, dispatch efficiency and
-              middle-mile cost across your network - identify the gaps,
-              quantify the impact and turn them into actionable improvement
-              plans.
+              Diagnose replenishment, dispatch and middle-mile cost across
+              your network - find the gaps, size the impact, fix what
+              matters.
             </p>
             <p className="hero-position">
               From operational gaps to measurable actions.
@@ -177,9 +135,6 @@ export default function HomePage() {
                 <Arrow />
               </span>
             </button>
-          </div>
-          <div className="hero-art">
-            <NetworkArt />
           </div>
         </div>
 
@@ -206,16 +161,6 @@ export default function HomePage() {
             </div>
           ))}
         </div>
-      </section>
-
-      <section className="final-cta">
-        <h2>Ready to diagnose your operation?</h2>
-        <button className="cta-pill" onClick={handleStartClick}>
-          Start Diagnostic
-          <span className="arrow-dot">
-            <Arrow />
-          </span>
-        </button>
       </section>
 
       {confirmOpen && (

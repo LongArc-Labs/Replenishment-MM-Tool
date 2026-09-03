@@ -116,6 +116,11 @@ export interface ScoreEntry {
   // to 1 so the flow doesn't block on a missing API key (only meaningful
   // when manual_score is not set).
   auto_failed: boolean;
+  // true when every indicative question was marked NA - this topic doesn't
+  // apply to the business at all. Excluded from the weighted rollup
+  // entirely (see runDiagnostic) rather than scored as a failure, unless a
+  // manual_score is set to explicitly override that.
+  not_applicable: boolean;
   updated_at: string | null;
 }
 

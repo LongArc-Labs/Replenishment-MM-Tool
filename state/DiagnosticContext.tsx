@@ -59,7 +59,6 @@ interface DiagnosticState {
   runDiagnosticNow: () => void;
 
   planItems: PlanItem[];
-  updatePlanItem: (id: string, patch: Partial<PlanItem>) => void;
 
   reset: () => void;
 }
@@ -156,9 +155,17 @@ export function DiagnosticProvider({ children }: { children: ReactNode }) {
     setQuizAnswers((prev) => ({ ...prev, [questionId]: optionIds }));
     // Any answer change invalidates a weight blend/lock computed from the
     // previous answers - force both back through Profile Verification
-    // rather than silently keeping a stale blend.
+    // rather than silently keeping a stale blend. Clearing moduleWeights
+    // (not just the flags) matters: runDiagnosticNow() falls back to a
+    // fresh blend only when this object is empty, so a stale-but-non-empty
+    // object would otherwise still get reused if scoring is somehow reached
+    // again without revisiting Profile Verification first.
+    setModuleWeights({});
     setWeightsInitialized(false);
     setProfileLocked(false);
+    // A result computed under the old answers/weights no longer reflects
+    // the new ones - flag it the same way an area-selection change does.
+    setResultStale(true);
   }, []);
 
   const quizComplete = useMemo(() => {
@@ -206,19 +213,23 @@ export function DiagnosticProvider({ children }: { children: ReactNode }) {
 
   // Scores one area and returns the entry - does not touch state itself, so
   // callers can score several areas and commit them together. The LLM is
-  // always called, even when a manual score is also given, so a rationale
-  // is kept on record either way - manual_score just wins in effectiveScore()
-  // when present. One retry before giving up keeps a single transient
-  // network blip from wrongly flagging the area as auto_failed.
+  // called whenever any question wasn't marked NA, even when a manual score
+  // is also given, so a rationale is kept on record either way - manual_score
+  // just wins in effectiveScore() when present. One retry before giving up
+  // keeps a single transient network blip from wrongly flagging the area as
+  // auto_failed; that retry runs at a nonzero temperature (see
+  // app/api/score/route.ts) so it isn't just the same deterministic request
+  // repeated.
   async function callScoreApi(
     areaId: string,
-    observation: string
+    observation: string,
+    attempt: 1 | 2 = 1
   ): Promise<{ score: number; rationale: string | null } | null> {
     try {
       const res = await fetch("/api/score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ area_id: areaId, observation }),
+        body: JSON.stringify({ area_id: areaId, observation, attempt }),
       });
       const data = await res.json();
       if (data.result?.score != null) {
@@ -241,19 +252,29 @@ export function DiagnosticProvider({ children }: { children: ReactNode }) {
       .map((a) => `Q: ${a.question}\nA: ${a.answer}`)
       .join("\n\n");
 
+    // Every question marked NA means this topic doesn't apply to the
+    // business at all (e.g. no reefer fleet) - that's different from a bad
+    // answer, so it's excluded from the rollup entirely (see runDiagnostic)
+    // rather than scored as a Level-1 failure. No LLM call needed either.
+    const not_applicable =
+      answers.length > 0 &&
+      answers.every((a) => a.answer.trim().toUpperCase() === "NA");
+
     let llm_score: number | null = null;
     let llm_rationale: string | null = null;
     let auto_failed = false;
 
-    let outcome = await callScoreApi(areaId, observation);
-    if (!outcome) outcome = await callScoreApi(areaId, observation); // one retry
+    if (!not_applicable) {
+      let outcome = await callScoreApi(areaId, observation, 1);
+      if (!outcome) outcome = await callScoreApi(areaId, observation, 2); // one retry
 
-    if (outcome) {
-      llm_score = outcome.score;
-      llm_rationale = outcome.rationale;
-    } else {
-      auto_failed = true;
-      llm_score = 1;
+      if (outcome) {
+        llm_score = outcome.score;
+        llm_rationale = outcome.rationale;
+      } else {
+        auto_failed = true;
+        llm_score = 1;
+      }
     }
 
     return {
@@ -266,6 +287,7 @@ export function DiagnosticProvider({ children }: { children: ReactNode }) {
       llm_rationale,
       manual_score: manualScore ?? null,
       auto_failed,
+      not_applicable,
       updated_at: new Date().toISOString(),
     };
   }
@@ -339,12 +361,6 @@ export function DiagnosticProvider({ children }: { children: ReactNode }) {
     setPlanItems(items);
   }, [moduleWeights, quizAnswers, scores, selectedAreaIds]);
 
-  const updatePlanItem = useCallback((id: string, patch: Partial<PlanItem>) => {
-    setPlanItems((prev) =>
-      prev.map((item) => (item.id === id ? { ...item, ...patch } : item))
-    );
-  }, []);
-
   const reset = useCallback(() => {
     setQuizAnswers({});
     setModuleWeights({});
@@ -386,7 +402,6 @@ export function DiagnosticProvider({ children }: { children: ReactNode }) {
       resultStale,
       runDiagnosticNow,
       planItems,
-      updatePlanItem,
       reset,
     }),
     [
@@ -410,7 +425,6 @@ export function DiagnosticProvider({ children }: { children: ReactNode }) {
       resultStale,
       runDiagnosticNow,
       planItems,
-      updatePlanItem,
       reset,
     ]
   );

@@ -1,7 +1,7 @@
 import { Document, Page, Text, View, StyleSheet, renderToBuffer } from "@react-pdf/renderer";
 import { getBenchmarks, getRecommendation } from "@/lib/kb";
 import { targetLevelFor } from "@/lib/aggregate";
-import type { DiagnosticResult, PlanItem } from "@/lib/types";
+import type { DiagnosticResult } from "@/lib/types";
 
 const styles = StyleSheet.create({
   page: { padding: 32, fontSize: 10, fontFamily: "Helvetica" },
@@ -26,13 +26,7 @@ const styles = StyleSheet.create({
   },
 });
 
-function ReportDoc({
-  result,
-  planItems,
-}: {
-  result: DiagnosticResult;
-  planItems: PlanItem[];
-}) {
+function ReportDoc({ result }: { result: DiagnosticResult }) {
   const benchmarks = getBenchmarks();
 
   return (
@@ -98,24 +92,13 @@ function ReportDoc({
               </View>
             );
           })}
-
-        <Text style={styles.h2}>Plan Tracker</Text>
-        {planItems.map((item) => (
-          <View style={styles.row} key={item.id}>
-            <Text style={styles.cell}>{item.area_name}</Text>
-            <Text style={styles.cell}>{item.owner || "-"}</Text>
-            <Text style={styles.cell}>{item.target_date ?? "-"}</Text>
-            <Text style={styles.cell}>{item.status}</Text>
-          </View>
-        ))}
       </Page>
     </Document>
   );
 }
 
 export async function renderDiagnosticPdf(
-  result: DiagnosticResult,
-  planItems: PlanItem[]
+  result: DiagnosticResult
 ): Promise<Buffer> {
-  return renderToBuffer(<ReportDoc result={result} planItems={planItems} />);
+  return renderToBuffer(<ReportDoc result={result} />);
 }

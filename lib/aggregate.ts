@@ -61,9 +61,20 @@ export function runDiagnostic(
   selectedAreaIds: string[]
 ): DiagnosticResult {
   const selected = new Set(selectedAreaIds);
-  const areas = getAreas().filter((a) => selected.has(a.area_id));
+  // An area marked not_applicable (every indicative question answered NA)
+  // is dropped from the rollup entirely - its weight is redistributed
+  // across the remaining areas/modules instead of scoring it as a Level-1
+  // failure - unless a manual_score was set to explicitly override that.
+  const isExcluded = (areaId: string) => {
+    const entry = scores[areaId];
+    return entry?.not_applicable === true && entry.manual_score == null;
+  };
+  const areas = getAreas().filter(
+    (a) => selected.has(a.area_id) && !isExcluded(a.area_id)
+  );
+  const includedAreaIds = new Set(areas.map((a) => a.area_id));
   const modules = getModules().filter((m) =>
-    m.area_ids.some((id) => selected.has(id))
+    m.area_ids.some((id) => includedAreaIds.has(id))
   );
 
   const normalizedWeights = normalizedModuleWeights(
