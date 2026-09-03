@@ -1,9 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { getQuiz } from "@/lib/kb";
 import { useDiagnostic } from "@/state/DiagnosticContext";
+
+// Long enough to see the option highlight before the page moves on, short
+// enough that it doesn't feel like a delay.
+const AUTO_ADVANCE_MS = 450;
 
 export default function QuizPage() {
   const router = useRouter();
@@ -28,17 +32,36 @@ export default function QuizPage() {
   const isLast = step === questions.length - 1;
   const canAdvance = selected.length > 0;
 
-  function selectOption(optionId: string) {
-    setQuizAnswer(q.id, [optionId]);
+  // Tracks the pending auto-advance so a rapid change of mind (picking a
+  // different option, or hitting Back) cancels the stale one instead of
+  // both firing.
+  const autoAdvanceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  function clearAutoAdvance() {
+    if (autoAdvanceRef.current) {
+      clearTimeout(autoAdvanceRef.current);
+      autoAdvanceRef.current = null;
+    }
   }
 
+  // Cancel a pending auto-advance if the step changes some other way (Back,
+  // or unmounting) so it can't fire against the wrong question.
+  useEffect(() => clearAutoAdvance, [step]);
+
   function next() {
+    clearAutoAdvance();
     if (isLast) {
       applyRecommendedWeights();
       router.push("/diagnose/profile");
     } else {
       setStep((s) => s + 1);
     }
+  }
+
+  function selectOption(optionId: string) {
+    setQuizAnswer(q.id, [optionId]);
+    clearAutoAdvance();
+    autoAdvanceRef.current = setTimeout(next, AUTO_ADVANCE_MS);
   }
 
   return (
